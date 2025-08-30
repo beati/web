@@ -27,7 +27,7 @@ function header(title, menu, menu2) {
 
     linkclass = getOneOrTwo(menu, menuHome, "linkbutton", "");
     homeimg = getOneOrTwo(menu, menuHome, "./common/infoSnow18x18.png", "./favicon.ico");
-    document.writeln("<a href=\"./index.html\" class=\"" + linkclass + "\"><img src=\"" + homeimg + "\" alt=\"Home\">&nbsp;</a>");
+    document.writeln("<a href=\"./\" class=\"" + linkclass + "\"><img src=\"" + homeimg + "\" alt=\"Home\">&nbsp;</a>");
 
     linkclass = getOneOrTwo(menu, menuEvangelium, "linkbutton", "");
     document.writeln("<a href=\"./evangelium/\" class=\"" + linkclass + "\">" + menuEvangelium + "</a>")

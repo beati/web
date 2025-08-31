@@ -57,3 +57,12 @@ function getMenu1or2(key1, key2, value1, value2) {
         return value2;
     }
 }
+
+function getFileForId(filename, id) {
+    const request = new XMLHttpRequest();
+    request.open("GET", filename, true);
+    request.onreadystatechange = function () {
+        document.getElementById(id).innerHTML = request.responseText;
+    }
+    request.send();
+}

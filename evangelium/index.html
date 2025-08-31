@@ -8,6 +8,15 @@
 </script>
 
 <main>
+    <div id="evangelium"></div>
+    <script>
+        const request = new XMLHttpRequest();
+        request.open("GET", "evangelium.html", true);
+        request.onreadystatechange = function() {
+            document.getElementById("evangelium").innerHTML = request.responseText;
+        }
+        request.send();
+    </script>
 </main>
 
 <script>

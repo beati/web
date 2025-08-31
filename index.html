@@ -1,9 +1,10 @@
 <script src="./common/common.js"></script>
 
 <script>
+    const root = ".";
     html();
-    headBody("Beat Gubser", "Herzlich Willkommen bei Beat Gubser");
-    header("Herzlich Willkommen bei Beat Gubser", menuHome, menuHome);
+    headBody(root, "Beat Gubser", "Herzlich Willkommen bei Beat Gubser");
+    header(root, "Herzlich Willkommen bei Beat Gubser", menuHome, menuHome);
 </script>
 
 <main>
@@ -17,7 +18,7 @@
         Sind Sie sicher, dass Sie ewiges Leben haben und einmal bei Gott in seiner Herrlichkeit sein werden?
     </div>
     <div>
-        Wenn Sie diese Frage nicht von ganzem Herzen mit JA beantworten können, empfehle ich Ihnen das <script>document.write("<a href=\"./evangelium\">Evangelium</a>")</script> auf meiner Seite zu studieren.
+        Wenn Sie diese Frage nicht von ganzem Herzen mit JA beantworten können, empfehle ich Ihnen das <script>writeLink(".", "/evangelium", "Evangelium")</script> auf meiner Seite zu studieren.
     </div>
 </main>
 

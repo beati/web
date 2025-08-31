@@ -1,5 +1,6 @@
 const menuHome = "Home";
 const menuEvangelium = "Evangelium";
+const menuEvangeliumBibel = "Bibel"
 
 function html() {
     document.writeln("<!DOCTYPE html>")
@@ -37,6 +38,14 @@ function header(root, title, menu1, menu2) {
     link = root + "/evangelium/";
     linkclass = getMenu1or2(menu1, menuEvangelium, "linkbutton", "");
     document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuEvangelium + "</a>")
+
+    if (menu1 == menuEvangelium) {
+        document.writeln("<nav class=\"notop nobottom\">");
+        link = root + "/evangelium/bibel/";
+        linkclass = getMenu1or2(menu2, menuEvangeliumBibel, "linkbutton nobottom", "nobottom")
+        document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuEvangeliumBibel + "</a>")
+        document.writeln("</nav>");
+    }
 
     document.writeln("</nav>");
 

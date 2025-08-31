@@ -55,8 +55,3 @@ function getMenu1or2(key1, key2, value1, value2) {
         return value2;
     }
 }
-
-function writeLink(root, link, name) {
-    const ref = root + link;
-    document.writeln("<a href=\"" + ref + "\">" + name + "</a>");
-}

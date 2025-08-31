@@ -14,6 +14,8 @@ function headBody(root, title, description) {
     document.writeln("<link rel=\"stylesheet\" href=\"" + css1 + "\">");
     const css2 = root + "/css/styles.css";
     document.writeln("<link rel=\"stylesheet\" href=\"" + css2 + "\">");
+    const favicon = root + "/common/favicon.ico"
+    document.writeln("<link rel=\"icon\" type=\"image/x-icon\" href=\"" + favicon + "\">");
     document.writeln("<meta name=\"description\" content=\"" + description + "\"/>");
     document.writeln("<title>" + title + "</title>");
     document.writeln("</head>");
@@ -29,7 +31,7 @@ function header(root, title, menu1, menu2) {
 
     let link = root + "/";
     let linkclass = getMenu1or2(menu1, menuHome, "linkbutton", "");
-    const homeimg = getMenu1or2(menu1, menuHome, root + "/common/infoSnow18x18.png", root + "/favicon.ico");
+    const homeimg = getMenu1or2(menu1, menuHome, root + "/common/infoSnow18x18.png", root + "/common/favicon.ico");
     document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\"><img src=\"" + homeimg + "\" alt=\"Home\">&nbsp;</a>");
 
     link = root + "/evangelium/";

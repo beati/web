@@ -1,6 +1,7 @@
 const menuHome = "Home";
 const menuEvangelium = "Evangelium";
 const menuEvangeliumBibel = "Bibel";
+const menuEvangeliumBibelleseplan = "Plan";
 const menuKontakt = "Kontakt";
 
 function html() {
@@ -51,6 +52,10 @@ function header(root, title, menu1, menu2) {
         link = root + "/evangelium/bibel/";
         linkclass = getValue1or2(menu2, menuEvangeliumBibel, "linkbutton nobottom", "nobottom")
         document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuEvangeliumBibel + "</a>")
+
+        link = root + "/evangelium/bibelleseplan/";
+        linkclass = getValue1or2(menu2, menuEvangeliumBibelleseplan, "linkbutton nobottom", "nobottom");
+        document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuEvangeliumBibelleseplan + "</a>")
 
         document.writeln("</nav>");
     }

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<script src="../../common/common.js"></script>
+
+<script>
+    const root = "../..";
+    html();
+    headBody(root, "Bibelleseplan | Beat Gubser", "Der Bibelleseplan von Karl-Heinz Vanheiden, Bibellesen in historischem Kontext, Der Bibelleseplan für mehr Durchblick");
+    header(root, "Bibelleseplan", menuEvangelium, menuEvangeliumBibelleseplan);
+</script>
+
+<main>
+    <div>
+        Der nachfolgende Bibelleseplan ermöglicht es die gesamte Bibel chronologisch in einem Jahr, oder auch länger, durchzulesen und zu studieren.
+    </div>
+    <div>
+        Erläuterungen zum Plan finden Sie am Ende der Seite.
+    </div>
+    <div>&nbsp;</div>
+    <div id="bibelleseplanId"></div>
+    <script>
+        getFileForId("bibelleseplan.html", "bibelleseplanId");
+    </script>
+    <div>
+        Der Bibelleseplan stammt von <a href="https://derbibelvertrauen.de/" target="_blank">Karl-Heinz Vanheiden</a> aus seinem Büchlein «Bibellesen im historischen Kontext» (CV Dillenburg). Er wird hier mit freundlicher Genehmigung des Autors publiziert.
+    </div>
+    <div>
+        In der ersten Spalte ist ein Jahr mit 365 Tagen durchnummeriert.
+    </div>
+    <div>
+        In der zweiten Spalte finden sich die Bibeltexte für jeden Tag in chronologischer Reihenfolge. Die Psalmen werden als Ausnahme über das ganze Jahr verteilt gelesen.
+    </div>
+    <div>
+        Mit der Tagesnummerierung in der dritten Spalte kann das Alte und das Neue Testament über das Jahr hinweg parallel gelesen werden. In der vierten Spalte sind die dazu notwengigen Wechsel angegeben.
+    </div>
+</main>
+
+<script>
+    footerBodyHtml();
+</script>

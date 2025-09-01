@@ -4,7 +4,6 @@ const menuEvangeliumBibel = "Bibel";
 const menuKontakt = "Kontakt";
 
 function html() {
-    document.writeln("<!DOCTYPE html>")
     document.writeln("<html lang=\"de-CH\">")
 }
 
@@ -32,25 +31,27 @@ function header(root, title, menu1, menu2) {
     document.writeln("<nav class=\"nobottom\">");
 
     let link = root + "/";
-    let linkclass = getMenu1or2(menu1, menuHome, "linkbutton", "");
-    const homeimg = getMenu1or2(menu1, menuHome, root + "/common/infoSnow18x18.png", root + "/common/favicon.ico");
-    document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\"><img src=\"" + homeimg + "\" alt=\"Home\">&nbsp;</a>");
+    let linkclass = getValue1or2(menu1, menuHome, "linkbutton", "");
+    const homeimg = getValue1or2(menu1, menuHome, root + "/common/infoSnow18x18.png", root + "/common/favicon.ico");
+    document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\"><img src=\"" + homeimg + "\" alt=\"Home\"></a>");
 
     link = root + "/evangelium/";
-    linkclass = getMenu1or2(menu1, menuEvangelium, "linkbutton", "");
+    linkclass = getValue1or2(menu1, menuEvangelium, "linkbutton", "");
     document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuEvangelium + "</a>")
 
     link = root + "/kontakt/";
-    linkclass = getMenu1or2(menu1, menuKontakt, "linkbutton", "");
+    linkclass = getValue1or2(menu1, menuKontakt, "linkbutton", "");
     document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuKontakt + "</a>")
 
     document.writeln("</nav>");
 
-    if (menu1 == menuEvangelium) {
+    if (menu1 === menuEvangelium) {
         document.writeln("<nav class=\"notop nobottom\">");
+
         link = root + "/evangelium/bibel/";
-        linkclass = getMenu1or2(menu2, menuEvangeliumBibel, "linkbutton nobottom", "nobottom")
+        linkclass = getValue1or2(menu2, menuEvangeliumBibel, "linkbutton nobottom", "nobottom")
         document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuEvangeliumBibel + "</a>")
+
         document.writeln("</nav>");
     }
 
@@ -64,7 +65,7 @@ function footerBodyHtml() {
     document.writeln("</html>")
 }
 
-function getMenu1or2(key1, key2, value1, value2) {
+function getValue1or2(key1, key2, value1, value2) {
     if (key1 === key2) {
         return value1;
     } else {

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<script src="../../common/common.js"></script>
+
+<script>
+    const root = "../..";
+    html();
+    headBody(root, "Gold | Beat Gubser", "Gold");
+    header(root, "Gold", menuWerte, menuWerte);
+</script>
+
+<main>
+    <script>
+        const url = "https://forex-data-feed.swissquote.com/public-quotes/bboquotes/instrument/XAU/";
+        const symbols = ['USD', 'CHF', 'EUR'];
+        let results = [];
+        symbols.forEach(function(currentValue) {
+            const response = getUrlResponse(url + currentValue);
+            console.log(response);
+        });
+    </script>
+    <div>
+        Goldpreis XAU am TODO Uhr UTC.
+    </div>
+    <div>
+        &nbsp;
+    </div>
+    <div id="goldId"></div>
+    <script>
+        getFileForId("gold.html", "goldId");
+    </script>
+</main>
+
+<script>
+    footerBodyHtml();
+</script>

@@ -96,3 +96,12 @@ function getFileForId(filename, id) {
     }
     request.send();
 }
+
+function getUrlResponse(url) {
+    const request = new XMLHttpRequest();
+    request.open("GET", url, true);
+    request.onreadystatechange = function () {
+        return request.responseText;
+    }
+    request.send();
+}

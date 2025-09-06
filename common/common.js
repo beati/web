@@ -101,9 +101,8 @@ function getUrlResponse(url) {
     const request = new XMLHttpRequest();
     request.open("GET", url, true);
     request.setRequestHeader('Accept', 'application/json');
-    request.setRequestHeader('Content-Type', 'application/json');
     request.onreadystatechange = function () {
-        return request.responseText;
+        console.log(request.responseText);
     }
     request.send();
 }

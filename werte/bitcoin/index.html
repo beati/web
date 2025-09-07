@@ -5,16 +5,16 @@
     const root = "../..";
     html();
     headBody(root, "Bitcoin | Beat Gubser", "Bitcoin");
-    header(root, "Bitcoin", menuWerte, menuWerte);
+    header(root, "Bitcoin", menuWerte, menuWerteBitcoin);
 </script>
 
 <main>
     <script>
         const now = new Date(Date.now()).toLocaleString("de");
         const ticker = JSON.parse(getSyncUrl("https://blockchain.info/ticker"));
-        const btcChfLast = ticker.CHF.last;
-        const btcUsdLast = ticker.USD.last;
-        const btcEurLast = ticker.EUR.last;
+        const btcChfLast = String(ticker.CHF.last).padStart(9, " ");
+        const btcUsdLast = String(ticker.USD.last).padStart(9, " ");
+        const btcEurLast = String(ticker.EUR.last).padStart(9, " ");
     </script>
     <div>
         Bitcoinpreis am <script>document.write(now)</script>

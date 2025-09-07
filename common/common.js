@@ -4,6 +4,8 @@ const menuEvangeliumBibel = "Bibel";
 const menuEvangeliumBibelleseplan = "Plan";
 const menuEntwicklung = "Entwicklung";
 const menuWerte = "Werte";
+const menuWerteGold = "Gold";
+const menuWerteBitcoin = "Bitcoin";
 const menuKontakt = "Kontakt";
 
 function html() {
@@ -70,6 +72,20 @@ function header(root, title, menu1, menu2) {
         document.writeln("</nav>");
     }
 
+    if (menu1 === menuWerte) {
+        document.writeln("<nav class=\"notop nobottom\">");
+
+        link = root + "/werte/gold/";
+        linkclass = getValue1or2(menu2, menuWerteGold, "linkbutton nobottom", "nobottom")
+        document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuWerteGold + "</a>")
+
+        link = root + "/werte/bitcoin/";
+        linkclass = getValue1or2(menu2, menuWerteBitcoin, "linkbutton nobottom", "nobottom")
+        document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuWerteBitcoin + "</a>")
+
+        document.writeln("</nav>");
+    }
+
     document.writeln("</header>");
 }
 
@@ -91,7 +107,7 @@ function getValue1or2(key1, key2, value1, value2) {
 function getSyncUrl(url) {
     const request = new XMLHttpRequest();
     request.open("GET", url, false);
-    request.send(null);
+    request.send();
     return request.responseText;
 }
 

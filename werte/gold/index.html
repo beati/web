@@ -9,20 +9,6 @@
 </script>
 
 <main>
-    <script>
-        const url = "https://forex-data-feed.swissquote.com/public-quotes/bboquotes/instrument/XAU/";
-        const symbols = ['USD', 'CHF', 'EUR'];
-        let results = [];
-        symbols.forEach(function(currentValue) {
-            getUrl(url + currentValue);
-        });
-    </script>
-    <div>
-        Goldpreis XAU am TODO Uhr UTC.
-    </div>
-    <div>
-        &nbsp;
-    </div>
     <div id="goldId"></div>
     <script>
         getFileForId("gold.html", "goldId");

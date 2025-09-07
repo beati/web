@@ -96,13 +96,3 @@ function getFileForId(filename, id) {
     }
     request.send();
 }
-
-function getUrl(url) {
-    fetch(url, {
-        method: 'GET',
-        headers: {'Accept': 'application/json'},
-        mode: 'no-cors'
-    }).then((response) => {
-        console.log(response);
-    });
-}

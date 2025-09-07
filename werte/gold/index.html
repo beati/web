@@ -14,8 +14,7 @@
         const symbols = ['USD', 'CHF', 'EUR'];
         let results = [];
         symbols.forEach(function(currentValue) {
-            const response = getUrlResponse(url + currentValue);
-            console.log(response);
+            getUrl(url + currentValue);
         });
     </script>
     <div>

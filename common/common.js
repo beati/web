@@ -97,12 +97,12 @@ function getFileForId(filename, id) {
     request.send();
 }
 
-function getUrlResponse(url) {
-    const request = new XMLHttpRequest();
-    request.open("GET", url, true);
-    request.setRequestHeader('Accept', 'application/json');
-    request.onreadystatechange = function () {
-        console.log(request.responseText);
-    }
-    request.send();
+function getUrl(url) {
+    fetch(url, {
+        method: 'GET',
+        headers: {'Accept': 'application/json'},
+        mode: 'no-cors'
+    }).then((response) => {
+        console.log(response);
+    });
 }

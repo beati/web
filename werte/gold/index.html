@@ -9,6 +9,35 @@
 </script>
 
 <main>
+    <script>
+        const feinunze = 31.1034768;
+        const xau = JSON.parse(getSyncUrl("https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/xau.min.json"));
+        const date = xau.date;
+        const xauChf = xau.xau.chf;
+        const xauChfKg = xauChf / feinunze * 1000;
+        const xauUsd = xau.xau.usd;
+        const xauUsdKg = xauUsd / feinunze * 1000;
+        const xauEur = xau.xau.eur;
+        const xauEurKg = xauEur / feinunze * 1000;
+    </script>
+    <div>
+        Goldpreis am <script>document.write(date)</script>
+    </div>
+    <script>
+        document.writeln("<pre>");
+        document.writeln("<code>1 Feinunze XAU = " + xauChf + " CHF</code>");
+        document.writeln("<code>1 Feinunze XAU = " + xauUsd + " USD</code>");
+        document.writeln("<code>1 Feinunze XAU = " + xauEur + " EUR</code>");
+        document.writeln("</pre>");
+    </script>
+    <script>
+        document.writeln("<pre>");
+        document.writeln("<code>1 Kilogramm XAU = " + xauChfKg + " CHF</code>");
+        document.writeln("<code>1 Kilogramm XAU = " + xauUsdKg + " USD</code>");
+        document.writeln("<code>1 Kilogramm XAU = " + xauEurKg + " EUR</code>");
+        document.writeln("</pre>");
+    </script>
+
     <div id="goldId"></div>
     <script>
         getAsyncUrlForId("gold.html", "goldId");

@@ -88,9 +88,16 @@ function getValue1or2(key1, key2, value1, value2) {
     }
 }
 
-function getFileForId(filename, id) {
+function getSyncUrl(url) {
     const request = new XMLHttpRequest();
-    request.open("GET", filename, true);
+    request.open("GET", url, false);
+    request.send(null);
+    return request.responseText;
+}
+
+function getAsyncUrlForId(url, id) {
+    const request = new XMLHttpRequest();
+    request.open("GET", url, true);
     request.onreadystatechange = function () {
         document.getElementById(id).innerHTML = request.responseText;
     }

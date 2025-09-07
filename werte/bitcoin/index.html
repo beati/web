@@ -9,9 +9,25 @@
 </script>
 
 <main>
+    <script>
+        const now = new Date(Date.now()).toLocaleString("de");
+        const ticker = JSON.parse(getSyncUrl("https://blockchain.info/ticker"));
+        const btcChfLast = ticker.CHF.last;
+        const btcUsdLast = ticker.USD.last;
+        const btcEurLast = ticker.EUR.last;
+    </script>
+    <div>
+        Bitcoinpreis am <script>document.write(now)</script>
+    </div>
+    <pre>
+        <code>1 BTC = <script>document.write(btcChfLast)</script> CHF</code>
+        <code>1 BTC = <script>document.write(btcUsdLast)</script> USD</code>
+        <code>1 BTC = <script>document.write(btcEurLast)</script> EUR</code>
+    </pre>
+
     <div id="bitcoinId"></div>
     <script>
-        getFileForId("bitcoin.html", "bitcoinId");
+        getAsyncUrlForId("bitcoin.html", "bitcoinId");
     </script>
 </main>
 

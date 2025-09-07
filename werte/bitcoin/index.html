@@ -19,11 +19,13 @@
     <div>
         Bitcoinpreis am <script>document.write(now)</script>
     </div>
-    <pre>
-        <code>1 BTC = <script>document.write(btcChfLast)</script> CHF</code>
-        <code>1 BTC = <script>document.write(btcUsdLast)</script> USD</code>
-        <code>1 BTC = <script>document.write(btcEurLast)</script> EUR</code>
-    </pre>
+    <script>
+        document.writeln("<pre>");
+        document.writeln("<code>1 BTC = " + btcChfLast + " CHF</code>");
+        document.writeln("<code>1 BTC = " + btcUsdLast + " USD</code>");
+        document.writeln("<code>1 BTC = " + btcEurLast + " EUR</code>");
+        document.writeln("</pre>");
+    </script>
 
     <div id="bitcoinId"></div>
     <script>

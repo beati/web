@@ -14,14 +14,14 @@
         const xau = JSON.parse(getSyncUrl("https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/xau.min.json"));
         const date = new Date(Date.parse(xau.date)).toLocaleDateString("de");
         const xauChf = xau.xau.chf;
-        const xauChfOz = xauChf.toFixed(2);
-        const xauChfKg = String((xauChf / feinunze * 1000).toFixed(2)).padStart(9, " ");
+        const xauChfOz = xauChf.toLocaleString('de-CH');
+        const xauChfKg = (xauChf / feinunze * 1000).toLocaleString('de-CH').padStart(11, " ");
         const xauUsd = xau.xau.usd;
-        const xauUsdOz = xauUsd.toFixed(2);
-        const xauUsdKg = String((xauUsd / feinunze * 1000).toFixed(2)).padStart(9, " ");
+        const xauUsdOz = xauUsd.toLocaleString('de-CH');
+        const xauUsdKg = (xauUsd / feinunze * 1000).toLocaleString('de-CH').padStart(11, " ");
         const xauEur = xau.xau.eur;
-        const xauEurOz = xauEur.toFixed(2);
-        const xauEurKg = String((xauEur / feinunze * 1000).toFixed(2)).padStart(9, " ");
+        const xauEurOz = xauEur.toLocaleString('de-CH');
+        const xauEurKg = (xauEur / feinunze * 1000).toLocaleString('de-CH').padStart(11, " ");
     </script>
     <div>
         Goldpreis am <script>document.write(date)</script>
@@ -32,8 +32,7 @@
         document.writeln("<code>1 Feinunze XAU = " + xauUsdOz + " USD</code>");
         document.writeln("<code>1 Feinunze XAU = " + xauEurOz + " EUR</code>");
         document.writeln("</pre>");
-    </script>
-    <script>
+
         document.writeln("<pre>");
         document.writeln("<code>1 Kilogramm XAU = " + xauChfKg + " CHF</code>");
         document.writeln("<code>1 Kilogramm XAU = " + xauUsdKg + " USD</code>");

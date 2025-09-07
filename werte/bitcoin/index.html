@@ -12,9 +12,9 @@
     <script>
         const now = new Date(Date.now()).toLocaleString("de");
         const ticker = JSON.parse(getSyncUrl("https://blockchain.info/ticker"));
-        const btcChfLast = String(ticker.CHF.last).padStart(9, " ");
-        const btcUsdLast = String(ticker.USD.last).padStart(9, " ");
-        const btcEurLast = String(ticker.EUR.last).padStart(9, " ");
+        const btcChfLast = String(ticker.CHF.last.toFixed(2)).padStart(9, " ");
+        const btcUsdLast = String(ticker.USD.last.toFixed(2)).padStart(9, " ");
+        const btcEurLast = String(ticker.EUR.last.toFixed(2)).padStart(9, " ");
     </script>
     <div>
         Bitcoinpreis am <script>document.write(now)</script>

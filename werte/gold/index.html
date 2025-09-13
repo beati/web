@@ -11,7 +11,7 @@
 <main>
     <script>
         const feinunze = 31.1034768;
-        const xau = JSON.parse(getSyncUrl("https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/xau.json"));
+        const xau = JSON.parse(getSyncUrl("https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/xau.json?_=" + new Date().getTime()));
         const date = new Date(Date.parse(xau.date)).toLocaleDateString("de");
         const xauChf = xau.xau.chf;
         const xauChfOz = xauChf.toLocaleString('de-CH');

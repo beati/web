@@ -38,6 +38,12 @@ a.linkbutton:hover {
     color: var(--bg) !important;
 }
 
+.simplebutton {
+    background: var(--bg);
+    color: var(--text);
+    border: var(--border) solid 1px;
+}
+
 @media only screen and (min-width: 47rem) {
     header {
           padding-left: 0;
@@ -90,6 +96,20 @@ main a:hover {
 
 .text-right {
     text-align: right;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+.flex-space-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.w-100 {
+    width: 100%;
 }
 
 .clear {

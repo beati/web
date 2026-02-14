@@ -6,6 +6,7 @@ const menuEntwicklung = "Entwicklung";
 const menuWerte = "Werte";
 const menuWerteGold = "Gold";
 const menuWerteBitcoin = "Bitcoin";
+const menuTools = "Tools";
 const menuKontakt = "Kontakt";
 
 function html() {
@@ -51,6 +52,10 @@ function header(root, title, menu1, menu2) {
     link = root + "/werte/";
     linkclass = getValue1or2(menu1, menuWerte, "linkbutton", "");
     document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuWerte + "</a>")
+
+    link = root + "/tools/";
+    linkclass = getValue1or2(menu1, menuTools, "linkbutton", "");
+    document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuTools + "</a>")
 
     link = root + "/kontakt/";
     linkclass = getValue1or2(menu1, menuKontakt, "linkbutton", "");

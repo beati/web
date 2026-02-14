@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<script src="../common/common.js"></script>
+
+<script>
+    const root = "..";
+    html();
+    headBody(root, "Tools | Beat Gubser", "Tools");
+    header(root, "Tools", menuTools, menuTools);
+</script>
+
+<main>
+    <script type="text/javascript" src="../node_modules/qrcode-generator/dist/qrcode.js"></script>
+    <script>
+        function generateQrcode() {
+            var qrcodeInput = document.getElementById('qrcodeInput').value;
+            if (qrcodeInput.length > 0) {
+                var typeNumber = 0;
+                var errorCorrectionLevel = 'H';
+                var qr = qrcode(typeNumber, errorCorrectionLevel);
+                qr.addData(qrcodeInput);
+                qr.make();
+                document.getElementById('qrcodePlaceholder').innerHTML = qr.createImgTag(10);
+            }
+        }
+
+        function resetQrcode() {
+            document.getElementById('qrcodeInput').value = null;
+            document.getElementById('qrcodePlaceholder').innerHTML = null;
+        }
+    </script>
+
+    <div>
+        <h4>QR-Code Generator</h4>
+    </div>
+    <div>
+        <textarea id="qrcodeInput" rows="3" class="w-100"></textarea>
+    </div>
+    <div class="flex-space-between">
+        <button onclick="resetQrcode()" class="simplebutton">Reset</button>
+        <button onclick="generateQrcode()">Generieren</button>
+    </div>
+    <div>
+        <div id="qrcodePlaceholder" class="flex-center"></div>
+    </div>
+</main>
+
+<script>
+    footerBodyHtml();
+</script>

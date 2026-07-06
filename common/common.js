@@ -3,6 +3,7 @@ const menuEvangelium = "Evangelium";
 const menuEvangeliumBibel = "Bibel";
 const menuEvangeliumBibelleseplan = "Plan";
 const menuEntwicklung = "Entwicklung";
+const menuReformation = "Reformation";
 const menuWerte = "Werte";
 const menuWerteGold = "Gold";
 const menuWerteBitcoin = "Bitcoin";
@@ -44,6 +45,10 @@ function header(root, title, menu1, menu2) {
     link = root + "/evangelium/";
     linkclass = getValue1or2(menu1, menuEvangelium, "linkbutton", "");
     document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuEvangelium + "</a>")
+
+    link = root + "/reformation/";
+    linkclass = getValue1or2(menu1, menuReformation, "linkbutton", "");
+    document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuReformation + "</a>")
 
     link = root + "/entwicklung/";
     linkclass = getValue1or2(menu1, menuEntwicklung, "linkbutton", "");

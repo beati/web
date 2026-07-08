@@ -32,7 +32,7 @@ jobs:
         run: npm install
 
       - name: rm
-        run: rm package*.json
+        run: rm package*.json CNAME
 
       - name: ls
         run: ls -l

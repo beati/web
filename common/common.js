@@ -18,7 +18,7 @@ function headBody(root, title, description) {
     document.writeln("<head>");
     document.writeln("<meta charset=\"UTF-8\">");
     document.writeln("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
-    const css1 = root + "/common/simple-v1.css";
+    const css1 = root + "/common/simple.css";
     document.writeln("<link rel=\"stylesheet\" href=\"" + css1 + "\">");
     const css2 = root + "/common/styles.css";
     document.writeln("<link rel=\"stylesheet\" href=\"" + css2 + "\">");
@@ -33,7 +33,7 @@ function headBody(root, title, description) {
 function header(root, title, menu1, menu2) {
     document.writeln("<header>");
     document.writeln("<div class=\"headerbox\">");
-    document.writeln("<h2>" + title + "</h2>");
+    document.writeln("<h1>" + title + "</h1>");
 
     document.writeln("<nav class=\"nobottom\">");
 
@@ -72,11 +72,11 @@ function header(root, title, menu1, menu2) {
         document.writeln("<nav class=\"notop nobottom\">");
 
         link = root + "/evangelium/bibel/";
-        linkclass = getValue1or2(menu2, menuEvangeliumBibel, "linkbutton nobottom", "nobottom")
+        linkclass = getValue1or2(menu2, menuEvangeliumBibel, "linkbutton", "")
         document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuEvangeliumBibel + "</a>")
 
         link = root + "/evangelium/bibelleseplan/";
-        linkclass = getValue1or2(menu2, menuEvangeliumBibelleseplan, "linkbutton nobottom", "nobottom");
+        linkclass = getValue1or2(menu2, menuEvangeliumBibelleseplan, "linkbutton", "");
         document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuEvangeliumBibelleseplan + "</a>")
 
         document.writeln("</nav>");
@@ -86,11 +86,11 @@ function header(root, title, menu1, menu2) {
         document.writeln("<nav class=\"notop nobottom\">");
 
         link = root + "/werte/gold/";
-        linkclass = getValue1or2(menu2, menuWerteGold, "linkbutton nobottom", "nobottom")
+        linkclass = getValue1or2(menu2, menuWerteGold, "linkbutton", "")
         document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuWerteGold + "</a>")
 
         link = root + "/werte/bitcoin/";
-        linkclass = getValue1or2(menu2, menuWerteBitcoin, "linkbutton nobottom", "nobottom")
+        linkclass = getValue1or2(menu2, menuWerteBitcoin, "linkbutton", "")
         document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuWerteBitcoin + "</a>")
 
         document.writeln("</nav>");

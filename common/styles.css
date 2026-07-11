@@ -1,32 +1,40 @@
 
 :root {
     --accent: dodgerblue;
+    --h2: #525252; /* https://htmlcolorcodes.com/colors/shades-of-gray/ */
 }
 
 /* Dark theme */
 @media (prefers-color-scheme: dark) {
   :root {
     --accent: dodgerblue;
-  }
-  img, video {
-    opacity: 0.9;
+    --h2: #adadad; /* https://htmlcolorcodes.com/colors/shades-of-gray/ */
   }
 }
 
-header {
-    margin-bottom: 1rem;
+body > header {
     text-align: left;
+    padding: 0 1rem 1rem 1rem;
 }
 
 .headerbox {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    max-width: 45rem;
+    max-width: 720px;
 }
 
-nav {
-    text-align: left;
+header nav a {
+    margin: 0 0 1rem 0;
+}
+
+@media only screen and (max-width: 720px) {
+    header nav a {
+        border: var(--border-width) solid var(--accent);
+        padding: 0.5em;
+        text-decoration: none;
+        line-height: normal;
+    }
 }
 
 .linkbutton {
@@ -35,6 +43,7 @@ nav {
     text-decoration: none !important;
 }
 a.linkbutton:hover {
+    background: var(--accent);
     color: var(--bg) !important;
 }
 
@@ -43,15 +52,9 @@ a.linkbutton:hover {
     color: var(--text);
     border: var(--border) solid 1px;
 }
-
-@media only screen and (min-width: 47rem) {
-    header {
-          padding-left: 0;
-          padding-right: 0;
-    }
-    main {
-          width: 45rem;
-    }
+button.simplebutton:hover {
+    background: var(--accent);
+    color: var(--bg);
 }
 
 main {
@@ -64,8 +67,12 @@ main a:hover {
     text-decoration: underline;
 }
 
-footer {
+body > footer {
     margin-top: 2rem;
+}
+
+.separator {
+    margin-top: 1rem;
 }
 
 .notop {
@@ -123,13 +130,24 @@ footer {
     clear: both;
 }
 
-h1, h2 {
+h1 {
     color: var(--accent);
-    margin: 0;
-    line-height: 1.1;
+    margin: 1rem 0 0 0;
+    font-size: 2.00rem;
 }
 
-h3, h4 {
-    line-height: 1.0;
-    margin: 1rem 0 1rem 0;
+h2 {
+    color: var(--h2);
+    font-size: 1.50rem;
+    margin: 1rem 0 0 0;
+}
+
+h3 {
+    font-size: 1.25rem;
+    margin: 1rem 0 0 0;
+}
+
+h4 {
+    font-size: 1.00rem;
+    margin: 1rem 0 0 0;
 }

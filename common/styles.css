@@ -143,6 +143,7 @@ body > footer {
 .flex-space-between {
     display: flex;
     justify-content: space-between;
+    gap: 1rem;
 }
 
 .flex-align-center {
@@ -183,5 +184,5 @@ h4 {
 }
 
 .theme-button {
-    font-size: 2rem;
+    font-size: 3rem;
 }

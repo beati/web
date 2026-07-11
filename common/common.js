@@ -33,7 +33,11 @@ function headBody(root, title, description) {
 function header(root, title, menu1, menu2) {
     document.writeln("<header>");
     document.writeln("<div class=\"headerbox\">");
-    document.writeln("<h1>" + title + "</h1>");
+
+    document.writeln("<div class='flex-space-between flex-align-center'>");
+    document.writeln("<div><h1>" + title + "</h1></div>");
+    document.writeln("<div><a id='theme-button' class='clickable theme-button'>&nbsp;</a></div>")
+    document.writeln("</div>")
 
     document.writeln("<nav>");
 
@@ -102,6 +106,27 @@ function header(root, title, menu1, menu2) {
 function footerBodyHtml() {
     document.writeln("<footer>")
     document.writeln("</footer>")
+
+    const themeButton = document.getElementById('theme-button');
+    themeButton.addEventListener('click', () => {
+        document.documentElement.classList.toggle('light-theme');
+        const light = document.documentElement.classList.contains('light-theme');
+        setTheme(light);
+    });
+    var sessionTheme = sessionStorage.getItem('theme');
+    if (!sessionTheme) {
+        const light = window.matchMedia('(prefers-color-scheme: light)').matches;
+        setTheme(light);
+    }
+    sessionTheme = sessionStorage.getItem('theme');
+    if ('light' === sessionTheme) {
+        document.documentElement.classList.add('light-theme');
+        setTheme(true);
+    } else {
+        document.documentElement.classList.remove('light-theme');
+        setTheme(false);
+    }
+
     document.writeln("</body>")
     document.writeln("</html>")
 }
@@ -128,4 +153,15 @@ function getAsyncUrlForId(url, id) {
         document.getElementById(id).innerHTML = request.responseText;
     }
     request.send();
+}
+
+function setTheme(light) {
+    const themeButton = document.getElementById('theme-button');
+    if (light) {
+        sessionStorage.setItem('theme', 'light')
+        themeButton.innerHTML = '&#x25CF;';
+    } else {
+        sessionStorage.setItem('theme', 'dark')
+        themeButton.innerHTML = '&#x25CB;';
+    }
 }

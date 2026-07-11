@@ -1,15 +1,44 @@
 
 :root {
+    /* Default dark theme */
+    --bg: #212121;
+    --accent-bg: #2b2b2b;
+    --text: #dcdcdc;
+    --text-light: #ababab;
     --accent: dodgerblue;
-    --h2: #525252; /* https://htmlcolorcodes.com/colors/shades-of-gray/ */
+    --accent-hover: #ffe099;
+    --accent-text: var(--bg);
+    --code: #f06292;
+    --preformatted: #ccc;
+    --disabled: #111;
+    --h2: #dbdbdb; /* https://htmlcolorcodes.com/colors/shades-of-gray/ */
+
+    img,
+    video {
+        opacity: 0.8;
+    }
 }
 
-/* Dark theme */
-@media (prefers-color-scheme: dark) {
-  :root {
+:root.light-theme {
+    /* Light theme */
+    --bg: #fff;
+    --accent-bg: #f5f7ff;
+    --text: #212121;
+    --text-light: #585858;
+    --border: #898EA4;
     --accent: dodgerblue;
-    --h2: #dbdbdb; /* https://htmlcolorcodes.com/colors/shades-of-gray/ */
-  }
+    --accent-hover: #1266e2;
+    --accent-text: var(--bg);
+    --code: #d81b60;
+    --preformatted: #444;
+    --marked: #ffdd33;
+    --disabled: #efefef;
+    --h2: #525252; /* https://htmlcolorcodes.com/colors/shades-of-gray/ */
+
+    img,
+    video {
+        opacity: 1.0;
+    }
 }
 
 body > header {
@@ -42,6 +71,7 @@ header nav a {
     color: var(--bg) !important;
     text-decoration: none !important;
 }
+
 a.linkbutton:hover {
     background: var(--accent);
     color: var(--bg) !important;
@@ -52,6 +82,7 @@ a.linkbutton:hover {
     color: var(--text);
     border: var(--border) solid 1px;
 }
+
 button.simplebutton:hover {
     background: var(--accent);
     color: var(--bg);
@@ -60,9 +91,11 @@ button.simplebutton:hover {
 main {
     padding-top: 0.5rem;
 }
+
 main a {
     text-decoration: none;
 }
+
 main a:hover {
     text-decoration: underline;
 }
@@ -83,7 +116,7 @@ body > footer {
 }
 
 .imgboxleft {
-    float:left;
+    float: left;
     margin-left: auto;
     margin-right: auto;
     max-width: 11.25rem;
@@ -91,7 +124,7 @@ body > footer {
 }
 
 .imgboxright {
-    float:right;
+    float: right;
     margin-left: auto;
     margin-right: auto;
     max-width: 11.25rem;
@@ -110,6 +143,11 @@ body > footer {
 .flex-space-between {
     display: flex;
     justify-content: space-between;
+}
+
+.flex-align-center {
+    display: flex;
+    align-items: center;
 }
 
 .w-100 {
@@ -138,4 +176,12 @@ h4 {
     color: var(--h2);
     font-size: 1.00rem;
     margin: 1rem 0 0 0;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.theme-button {
+    font-size: 2rem;
 }

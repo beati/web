@@ -157,7 +157,7 @@ body > footer {
 
 h1 {
     color: var(--accent);
-    margin: 1rem 0 0 0;
+    margin: 0 !important;
     font-size: 2.00rem;
 }
 

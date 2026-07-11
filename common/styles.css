@@ -54,11 +54,18 @@ a.linkbutton:hover {
     }
 }
 
+main {
+    padding-top: 0.5rem;
+}
 main a {
     text-decoration: none;
 }
 main a:hover {
     text-decoration: underline;
+}
+
+footer {
+    margin-top: 2rem;
 }
 
 .notop {
@@ -124,4 +131,5 @@ h1, h2 {
 
 h3, h4 {
     line-height: 1.0;
+    margin: 1rem 0 1rem 0;
 }

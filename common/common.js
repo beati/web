@@ -18,7 +18,7 @@ function headBody(root, title, description) {
     document.writeln("<head>");
     document.writeln("<meta charset=\"UTF-8\">");
     document.writeln("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
-    const css1 = root + "/common/simple.min.css";
+    const css1 = root + "/common/simple-v1.css";
     document.writeln("<link rel=\"stylesheet\" href=\"" + css1 + "\">");
     const css2 = root + "/common/styles.css";
     document.writeln("<link rel=\"stylesheet\" href=\"" + css2 + "\">");

@@ -4,6 +4,7 @@ const menuEvangeliumBibel = "Bibel";
 const menuEvangeliumBibelleseplan = "Plan";
 const menuEntwicklung = "Entwicklung";
 const menuReformation = "Reformation";
+const menuReformationSchaeffer = "Schaeffer";
 const menuWerte = "Werte";
 const menuWerteGold = "Gold";
 const menuWerteBitcoin = "Bitcoin";
@@ -82,6 +83,16 @@ function header(root, title, menu1, menu2) {
         link = root + "/evangelium/bibelleseplan/";
         linkclass = getValue1or2(menu2, menuEvangeliumBibelleseplan, "linkbutton", "");
         document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuEvangeliumBibelleseplan + "</a>")
+
+        document.writeln("</nav>");
+    }
+
+    if (menu1 === menuReformation) {
+        document.writeln("<nav>");
+
+        link = root + "/reformation/schaeffer/";
+        linkclass = getValue1or2(menu2, menuReformationSchaeffer, "linkbutton", "")
+        document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuReformationSchaeffer + "</a>")
 
         document.writeln("</nav>");
     }

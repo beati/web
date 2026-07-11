@@ -138,6 +138,13 @@ body > footer {
     text-align: right;
 }
 
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
 .flex-center {
     display: flex;
     justify-content: center;
@@ -188,4 +195,8 @@ h4 {
 
 .theme-button {
     font-size: 2rem;
+}
+
+iframe {
+    border: 0;
 }

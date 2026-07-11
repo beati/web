@@ -8,7 +8,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --accent: dodgerblue;
-    --h2: #adadad; /* https://htmlcolorcodes.com/colors/shades-of-gray/ */
+    --h2: #dbdbdb; /* https://htmlcolorcodes.com/colors/shades-of-gray/ */
   }
 }
 

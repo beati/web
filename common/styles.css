@@ -75,16 +75,6 @@ body > footer {
     margin-top: 1rem;
 }
 
-.notop {
-    margin-top: 0;
-    padding-top: 0;
-}
-
-.nobottom {
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
 .imgbox {
     display: block;
     margin-left: auto;
@@ -126,10 +116,6 @@ body > footer {
     width: 100%;
 }
 
-.clear {
-    clear: both;
-}
-
 h1 {
     color: var(--accent);
     margin: 1rem 0 0 0;
@@ -143,11 +129,13 @@ h2 {
 }
 
 h3 {
+    color: var(--h2);
     font-size: 1.25rem;
     margin: 1rem 0 0 0;
 }
 
 h4 {
+    color: var(--h2);
     font-size: 1.00rem;
     margin: 1rem 0 0 0;
 }

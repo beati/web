@@ -35,7 +35,7 @@ function header(root, title, menu1, menu2) {
     document.writeln("<div class=\"headerbox\">");
     document.writeln("<h1>" + title + "</h1>");
 
-    document.writeln("<nav class=\"nobottom\">");
+    document.writeln("<nav>");
 
     let link = root + "/";
     let linkclass = getValue1or2(menu1, menuHome, "linkbutton", "");
@@ -69,7 +69,7 @@ function header(root, title, menu1, menu2) {
     document.writeln("</nav>");
 
     if (menu1 === menuEvangelium) {
-        document.writeln("<nav class=\"notop nobottom\">");
+        document.writeln("<nav>");
 
         link = root + "/evangelium/bibel/";
         linkclass = getValue1or2(menu2, menuEvangeliumBibel, "linkbutton", "")
@@ -83,7 +83,7 @@ function header(root, title, menu1, menu2) {
     }
 
     if (menu1 === menuWerte) {
-        document.writeln("<nav class=\"notop nobottom\">");
+        document.writeln("<nav>");
 
         link = root + "/werte/gold/";
         linkclass = getValue1or2(menu2, menuWerteGold, "linkbutton", "")

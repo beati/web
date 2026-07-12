@@ -70,7 +70,8 @@
                     }
                 });
                 const randomIndex = Math.floor(Math.random() * zeilenFiltered.length);
-                sessionStorage.setItem('gebet-anliegen', zeilenFiltered.at(randomIndex));
+                const zeile = zeilenFiltered.at(randomIndex);
+                sessionStorage.setItem('gebet-anliegen', `${randomIndex + 1}/${zeilenFiltered.length} ${zeile}`);
                 location.reload();
             } else {
                 this.reset();

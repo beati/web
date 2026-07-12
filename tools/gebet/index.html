@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<script src="../../common/common.js"></script>
+
+<script>
+    const root = "../..";
+    html();
+    headBody(root, "Gebet | Beat Gubser", "Gebet");
+    header(root, "Gebet", menuTools, menuToolsGebet);
+</script>
+
+<main>
+    <script>
+        var status = sessionStorage.getItem('gebet-status');
+        if ("ziehen" === status) {
+            const gebetAnliegen = sessionStorage.getItem('gebet-anliegen');
+            if (gebetAnliegen) {
+                document.writeln("<pre>", gebetAnliegen, "</pre>");
+            }
+
+            document.writeln("<div class='flex-space-between separator'>");
+            document.writeln("<button onclick='reset()' class='simplebutton'>Reset</button>");
+            document.writeln("<button onclick='ziehen()' class='simplebutton'>Ziehen</button>");
+            document.writeln("</div>");
+
+            const gebetListe = sessionStorage.getItem('gebet-liste');
+            document.writeln("<pre>", gebetListe, "</pre>");
+        } else {
+            document.writeln("<pre>Liste laden <input type='file' id='gebet-liste-id' /></pre>");
+            document.writeln("<div class='flex-space-between'>");
+            document.writeln("<button onclick='reset()' class='simplebutton'>Reset</button>");
+            document.writeln("<button onclick='laden()' class='simplebutton'>Laden</button>");
+            document.writeln("</div>");
+
+            document.writeln("<div class='separator'>Es gibt verschiedene Formen des Gebets.</div>");
+            document.writeln("<div>Eine Möglichkeit ist es Gebetsanliegen als Listen zu führen und regelmässig für diese Anliegen zu beten.</div>");
+            document.writeln("<div>Ich stelle hier ein einfaches Werkzeug zur Verfügung, mit welchem Sie zufällig Anliegen aus einer Liste ziehen und dafür beten können.</div>");
+            document.writeln("<div>Eine solche Liste besteht aus einer Textdatei.</div>");
+            document.writeln("<div>Als Beispiel können Sie die Datei <a href='./Anliegen.txt' target='_blank'>Anliegen.txt</a> öffnen und lokal speichern (1), mit dem Knopf nach \"Liste laden\" auswählen (2) und dann mit dem Knopf \"Laden\" hochladen (3).</div>");
+            document.writeln("<div>Nun gelangen Sie auf eine neue Seite wo Sie Anliegen zufällig ziehen können.</div>");
+        }
+
+        function reset() {
+            sessionStorage.removeItem('gebet-status');
+            sessionStorage.removeItem('gebet-liste');
+            sessionStorage.removeItem('gebet-anliegen');
+            location.reload();
+        }
+
+        function laden() {
+            const gebetListe = sessionStorage.getItem('gebet-liste');
+            if (gebetListe) {
+                sessionStorage.setItem('gebet-status', 'ziehen');
+                location.reload();
+            } else {
+                this.reset();
+            }
+        }
+
+        function ziehen() {
+            const gebetListe = sessionStorage.getItem('gebet-liste');
+            if (gebetListe) {
+                const zeilen = gebetListe.split(/\r?\n/);
+                const zeilenFiltered = zeilen.filter(zeile => {
+                    if (!zeile) {
+                        return false;
+                    } else if (zeile.startsWith('#')) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                });
+                const randomIndex = Math.floor(Math.random() * zeilenFiltered.length);
+                sessionStorage.setItem('gebet-anliegen', zeilenFiltered.at(randomIndex));
+                location.reload();
+            } else {
+                this.reset();
+            }
+        }
+
+        const gebetListe = document.getElementById('gebet-liste-id');
+        if (gebetListe) {
+            gebetListe.addEventListener('change', (event) => {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        sessionStorage.setItem('gebet-liste', e.target.result);
+                    };
+                    reader.readAsText(file);
+                } else {
+                    this.reset();
+                }
+            });
+        }
+    </script>
+</main>
+
+<script>
+    footerBodyHtml();
+</script>

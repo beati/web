@@ -9,6 +9,8 @@ const menuWerte = "Werte";
 const menuWerteGold = "Gold";
 const menuWerteBitcoin = "Bitcoin";
 const menuTools = "Tools";
+const menuToolsGebet = "Gebet";
+const menuToolsQrcode = "QR-Code";
 const menuKontakt = "Kontakt";
 
 function html() {
@@ -107,6 +109,20 @@ function header(root, title, menu1, menu2) {
         link = root + "/werte/bitcoin/";
         linkclass = getValue1or2(menu2, menuWerteBitcoin, "linkbutton", "")
         document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuWerteBitcoin + "</a>")
+
+        document.writeln("</nav>");
+    }
+
+    if (menu1 === menuTools) {
+        document.writeln("<nav>");
+
+        link = root + "/tools/gebet/";
+        linkclass = getValue1or2(menu2, menuToolsGebet, "linkbutton", "")
+        document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuToolsGebet + "</a>")
+
+        link = root + "/tools/qrcode/";
+        linkclass = getValue1or2(menu2, menuToolsQrcode, "linkbutton", "")
+        document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuToolsQrcode + "</a>")
 
         document.writeln("</nav>");
     }

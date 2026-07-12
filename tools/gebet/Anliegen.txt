@@ -1,0 +1,26 @@
+# --------
+# Anliegen
+# --------
+
+# --------
+# Sie können diese Datei als Vorlage für Ihre Gebetsliste verwenden.
+#
+# Leerzeilen und Zeilen welche mit einem # anfangen werden ignoriert.
+# Alle anderen Zeilen werden als Gebetsanliegen interpretiert.
+# --------
+
+Anliegen 1
+Anliegen 2
+Anliegen 3
+Anliegen 4
+Anliegen 5
+
+Anliegen 6
+Anliegen 7
+Anliegen 8
+Anliegen 9
+Anliegen 10
+
+# --------
+# Ende
+# --------

@@ -25,7 +25,7 @@
             const gebetListe = sessionStorage.getItem('gebet-liste');
             document.writeln("<pre>", gebetListe, "</pre>");
         } else {
-            document.writeln("<pre>Liste laden <input type='file' id='gebet-liste-id' /></pre>");
+            document.writeln("<pre>Liste <input type='file' id='gebet-liste-id' /></pre>");
             document.writeln("<div class='flex-space-between'>");
             document.writeln("<button onclick='reset()' class='simplebutton'>Reset</button>");
             document.writeln("<button onclick='laden()' class='simplebutton'>Laden</button>");
@@ -35,7 +35,7 @@
             document.writeln("<div>Eine Möglichkeit ist es Gebetsanliegen als Listen zu führen und regelmässig für diese Anliegen zu beten.</div>");
             document.writeln("<div>Ich stelle hier ein einfaches Werkzeug zur Verfügung, mit welchem Sie zufällig Anliegen aus einer Liste ziehen und dafür beten können.</div>");
             document.writeln("<div>Eine solche Liste besteht aus einer Textdatei.</div>");
-            document.writeln("<div>Als Beispiel können Sie die Datei <a href='./Anliegen.txt' target='_blank'>Anliegen.txt</a> öffnen und lokal speichern (1), mit dem Knopf nach \"Liste laden\" auswählen (2) und dann mit dem Knopf \"Laden\" hochladen (3).</div>");
+            document.writeln("<div>Als Beispiel können Sie die Datei <a href='./Anliegen.txt' target='_blank'>Anliegen.txt</a> öffnen und lokal speichern (1), mit dem Knopf nach \"Liste\" auswählen (2) und dann mit dem Knopf \"Laden\" hochladen (3).</div>");
             document.writeln("<div>Nun gelangen Sie auf eine neue Seite wo Sie Anliegen zufällig ziehen können.</div>");
         }
 

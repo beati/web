@@ -3,7 +3,7 @@
 # --------
 
 # --------
-# Sie können diese Datei als Vorlage für Ihre Gebetsliste verwenden.
+# Sie kÃ¶nnen diese Datei als Vorlage fÃ¼r Ihre Gebetsliste verwenden.
 #
 # Leerzeilen und Zeilen welche mit einem # anfangen werden ignoriert.
 # Alle anderen Zeilen werden als Gebetsanliegen interpretiert.

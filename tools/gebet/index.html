@@ -27,7 +27,7 @@
             const gebetListe = sessionStorage.getItem('gebet-liste');
             document.writeln("<pre>", gebetListe, "</pre>");
         } else {
-            document.writeln("<pre><input type='file' id='gebet-liste-id' /></pre>");
+            document.writeln("<pre><input type='file' id='gebet-liste-id' accept='text/plain' /></pre>");
             document.writeln("<div class='flex-space-between'>");
             document.writeln("<button onclick='reset()' class='simplebutton'>Reset</button>");
             document.writeln("<button onclick='laden()' class='simplebutton'>Laden</button>");
@@ -85,13 +85,18 @@
                         return true;
                     }
                 });
-                const randomIndex = Math.floor(Math.random() * zeilenFiltered.length);
-                const zeile = zeilenFiltered.at(randomIndex);
-                const gebetZaehler = Number(sessionStorage.getItem('gebet-zaehler')) + 1;
-                sessionStorage.setItem('gebet-zaehler', gebetZaehler);
-                sessionStorage.setItem('gebet-info', `#${gebetZaehler} / ${randomIndex + 1} / ${zeilenFiltered.length}`);
-                sessionStorage.setItem('gebet-anliegen', `${zeile}`);
-                location.reload();
+                const length = zeilenFiltered.length;
+                if (length > 0) {
+                    const randomIndex = Math.floor(Math.random() * length);
+                    const zeile = zeilenFiltered.at(randomIndex);
+                    const gebetZaehler = Number(sessionStorage.getItem('gebet-zaehler')) + 1;
+                    sessionStorage.setItem('gebet-zaehler', gebetZaehler);
+                    sessionStorage.setItem('gebet-info', `#${gebetZaehler} / ${randomIndex + 1} / ${length}`);
+                    sessionStorage.setItem('gebet-anliegen', `${zeile}`);
+                    location.reload();
+                } else {
+                    this.reset();
+                }
             } else {
                 this.reset();
             }
@@ -104,7 +109,14 @@
                 if (file) {
                     const reader = new FileReader();
                     reader.onload = (e) => {
-                        sessionStorage.setItem('gebet-liste', e.target.result);
+                        const liste = e.target.result;
+                        if (liste) {
+                            if (file.type === 'text/plain') {
+                                sessionStorage.setItem('gebet-liste', liste);
+                            } else {
+                                sessionStorage.setItem('gebet-liste', `# ${file.type}`);
+                            }
+                        }
                     };
                     reader.readAsText(file);
                 } else {

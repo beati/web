@@ -4,6 +4,7 @@ const menuEvangeliumBibel = "Bibel";
 const menuEvangeliumBibelleseplan = "Plan";
 const menuEntwicklung = "Entwicklung";
 const menuReformation = "Reformation";
+const menuReformationZwingli = "Zwingli";
 const menuReformationSchaeffer = "Schaeffer";
 const menuWerte = "Werte";
 const menuWerteGold = "Gold";
@@ -91,6 +92,10 @@ function header(root, title, menu1, menu2) {
 
     if (menu1 === menuReformation) {
         document.writeln("<nav>");
+
+        link = root + "/reformation/zwingli/";
+        linkclass = getValue1or2(menu2, menuReformationZwingli, "linkbutton", "")
+        document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuReformationZwingli + "</a>")
 
         link = root + "/reformation/schaeffer/";
         linkclass = getValue1or2(menu2, menuReformationSchaeffer, "linkbutton", "")

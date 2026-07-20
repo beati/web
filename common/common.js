@@ -15,137 +15,198 @@ const menuToolsQrcode = "QR-Code";
 const menuKontakt = "Kontakt";
 
 function html() {
-    document.writeln("<html lang=\"de-CH\">")
+    const htmlElement = document.createElement("html");
+    htmlElement.setAttribute("lang", "de-CH");
+    document = htmlElement;
 }
 
-function headBody(root, title, description) {
-    document.writeln("<head>");
-    document.writeln("<meta charset=\"UTF-8\">");
-    document.writeln("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
-    const css1 = root + "/common/simple.css";
-    document.writeln("<link rel=\"stylesheet\" href=\"" + css1 + "\">");
-    const css2 = root + "/common/styles.css";
-    document.writeln("<link rel=\"stylesheet\" href=\"" + css2 + "\">");
-    const favicon = root + "/common/favicon.ico"
-    document.writeln("<link rel=\"icon\" type=\"image/x-icon\" href=\"" + favicon + "\">");
-    document.writeln("<meta name=\"description\" content=\"" + description + "\"/>");
-    document.writeln("<title>" + title + "</title>");
-    document.writeln("</head>");
-    document.writeln("<body>");
+function head(root, title, description) {
+    document.head = document.createElement("head");
+
+    const charsetElement = document.createElement("meta");
+    charsetElement.setAttribute("charset", "UTF-8");
+    document.head.append(charsetElement);
+
+    const viewportElement = document.createElement("meta");
+    viewportElement.setAttribute("name", "viewport");
+    viewportElement.setAttribute("content", "width=device-width, initial-scale=1.0");
+    document.head.append(viewportElement);
+
+    const simpleCssElement = document.createElement("link");
+    simpleCssElement.setAttribute("rel", "stylesheet");
+    simpleCssElement.setAttribute("href", `${root}/common/simple.css`);
+    document.head.append(simpleCssElement);
+
+    const stylesCssElement = document.createElement("link");
+    stylesCssElement.setAttribute("rel", "stylesheet");
+    stylesCssElement.setAttribute("href", `${root}/common/styles.css`);
+    document.head.append(stylesCssElement);
+
+    const faviconElement = document.createElement("link");
+    faviconElement.setAttribute("rel", "icon");
+    faviconElement.setAttribute("type", "image/x-icon");
+    faviconElement.setAttribute("href", `${root}/common/favicon.ico`);
+    document.head.append(faviconElement);
+
+    const titleElement = document.createElement("title");
+    titleElement.textContent = title;
+    document.head.append(titleElement);
+
+    const descriptionElement = document.createElement("meta");
+    descriptionElement.setAttribute("name", "description");
+    descriptionElement.setAttribute("content", description);
+    document.head.append(descriptionElement);
 }
 
-function header(root, title, menu1, menu2) {
-    document.writeln("<header>");
-    document.writeln("<div class=\"headerbox\">");
+function bodyHeader(root, title, menu1, menu2) {
+    document.body = document.createElement("body");
 
-    document.writeln("<div class='flex-space-between flex-align-center'>");
-    document.writeln("<div><h1>" + title + "</h1></div>");
-    document.writeln("<div><a id='theme-button' class='clickable theme-button'>&nbsp;</a></div>")
-    document.writeln("</div>")
+    const headerElement = document.createElement("header");
+    document.body.append(headerElement);
 
-    document.writeln("<nav>");
+    const headerboxElement = document.createElement("div");
+    headerboxElement.setAttribute("class", "headerbox");
+    headerElement.append(headerboxElement);
 
-    let link = root + "/";
-    let linkclass = getValue1or2(menu1, menuHome, "linkbutton", "");
-    const homeimg = getValue1or2(menu1, menuHome, root + "/common/infoSnow18x18.png", root + "/common/favicon.ico");
-    document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\"><img src=\"" + homeimg + "\" alt=\"Home\"></a>");
+    const spaceBetweenElement = document.createElement("div");
+    spaceBetweenElement.setAttribute("class", "flex-space-between flex-align-center");
+    headerboxElement.append(spaceBetweenElement);
 
-    link = root + "/evangelium/";
-    linkclass = getValue1or2(menu1, menuEvangelium, "linkbutton", "");
-    document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuEvangelium + "</a>")
+    const titleElement = document.createElement("h1");
+    titleElement.textContent = title;
+    spaceBetweenElement.append(titleElement);
 
-    link = root + "/reformation/";
-    linkclass = getValue1or2(menu1, menuReformation, "linkbutton", "");
-    document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuReformation + "</a>")
+    const themeElement = document.createElement("a");
+    themeElement.setAttribute("id", "theme-button");
+    themeElement.setAttribute("class", "clickable theme-button");
+    spaceBetweenElement.append(themeElement);
+    themeScript();
 
-    link = root + "/entwicklung/";
-    linkclass = getValue1or2(menu1, menuEntwicklung, "linkbutton", "");
-    document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuEntwicklung + "</a>")
+    const navElement = document.createElement("nav");
+    headerboxElement.append(navElement);
 
-    link = root + "/werte/";
-    linkclass = getValue1or2(menu1, menuWerte, "linkbutton", "");
-    document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuWerte + "</a>")
+    const homeimgElement = document.createElement("img");
+    homeimgElement.setAttribute("src", getValue1or2(menu1, menuHome, root + "/common/infoSnow18x18.png", root + "/common/favicon.ico"));
+    homeimgElement.setAttribute("alt", "Home");
+    const homeElement = document.createElement("a");
+    homeElement.setAttribute("href", `${root}/`);
+    homeElement.setAttribute("class", getValue1or2(menu1, menuHome, "linkbutton", ""));
+    homeElement.append(homeimgElement);
+    navElement.append(homeElement);
 
-    link = root + "/tools/";
-    linkclass = getValue1or2(menu1, menuTools, "linkbutton", "");
-    document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuTools + "</a>")
+    const evangeliumElement = document.createElement("a");
+    evangeliumElement.setAttribute("href", `${root}/evangelium/`);
+    evangeliumElement.setAttribute("class", getValue1or2(menu1, menuEvangelium, "linkbutton", ""));
+    evangeliumElement.textContent = menuEvangelium;
+    navElement.append(evangeliumElement);
 
-    link = root + "/kontakt/";
-    linkclass = getValue1or2(menu1, menuKontakt, "linkbutton", "");
-    document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuKontakt + "</a>")
+    const reformationElement = document.createElement("a");
+    reformationElement.setAttribute("href", `${root}/reformation/`);
+    reformationElement.setAttribute("class", getValue1or2(menu1, menuReformation, "linkbutton", ""));
+    reformationElement.textContent = menuReformation;
+    navElement.append(reformationElement);
 
-    document.writeln("</nav>");
+    const entwicklungElement = document.createElement("a");
+    entwicklungElement.setAttribute("href", `${root}/entwicklung/`);
+    entwicklungElement.setAttribute("class", getValue1or2(menu1, menuEntwicklung, "linkbutton", ""));
+    entwicklungElement.textContent = menuEntwicklung;
+    navElement.append(entwicklungElement);
+
+    const werteElement = document.createElement("a");
+    werteElement.setAttribute("href", `${root}/werte/`);
+    werteElement.setAttribute("class", getValue1or2(menu1, menuWerte, "linkbutton", ""));
+    werteElement.textContent = menuWerte;
+    navElement.append(werteElement);
+
+    const toolsElement = document.createElement("a");
+    toolsElement.setAttribute("href", `${root}/tools/`);
+    toolsElement.setAttribute("class", getValue1or2(menu1, menuTools, "linkbutton", ""));
+    toolsElement.textContent = menuTools;
+    navElement.append(toolsElement);
+
+    const kontaktElement = document.createElement("a");
+    kontaktElement.setAttribute("href", `${root}/kontakt/`);
+    kontaktElement.setAttribute("class", getValue1or2(menu1, menuKontakt, "linkbutton", ""));
+    kontaktElement.textContent = menuKontakt;
+    navElement.append(kontaktElement);
 
     if (menu1 === menuEvangelium) {
-        document.writeln("<nav>");
+        const nav2Element = document.createElement("nav");
+        headerboxElement.append(nav2Element);
 
-        link = root + "/evangelium/bibel/";
-        linkclass = getValue1or2(menu2, menuEvangeliumBibel, "linkbutton", "")
-        document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuEvangeliumBibel + "</a>")
+        const evangeliumBibelElement = document.createElement("a");
+        evangeliumBibelElement.setAttribute("href", `${root}/evangelium/bibel/`);
+        evangeliumBibelElement.setAttribute("class", getValue1or2(menu2, menuEvangeliumBibel, "linkbutton", ""));
+        evangeliumBibelElement.textContent = menuEvangeliumBibel;
+        nav2Element.append(evangeliumBibelElement);
 
-        link = root + "/evangelium/bibelleseplan/";
-        linkclass = getValue1or2(menu2, menuEvangeliumBibelleseplan, "linkbutton", "");
-        document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuEvangeliumBibelleseplan + "</a>")
-
-        document.writeln("</nav>");
+        const evangeliumBibelleseplanElement = document.createElement("a");
+        evangeliumBibelleseplanElement.setAttribute("href", `${root}/evangelium/bibelleseplan/`);
+        evangeliumBibelleseplanElement.setAttribute("class", getValue1or2(menu2, menuEvangeliumBibelleseplan, "linkbutton", ""));
+        evangeliumBibelleseplanElement.textContent = menuEvangeliumBibelleseplan;
+        nav2Element.append(evangeliumBibelleseplanElement);
     }
 
     if (menu1 === menuReformation) {
-        document.writeln("<nav>");
+        const nav2Element = document.createElement("nav");
+        headerboxElement.append(nav2Element);
 
-        link = root + "/reformation/zwingli/";
-        linkclass = getValue1or2(menu2, menuReformationZwingli, "linkbutton", "")
-        document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuReformationZwingli + "</a>")
+        const reformationZwingliElement = document.createElement("a");
+        reformationZwingliElement.setAttribute("href", `${root}/reformation/zwingli/`);
+        reformationZwingliElement.setAttribute("class", getValue1or2(menu2, menuReformationZwingli, "linkbutton", ""));
+        reformationZwingliElement.textContent = menuReformationZwingli;
+        nav2Element.append(reformationZwingliElement);
 
-        link = root + "/reformation/schaeffer/";
-        linkclass = getValue1or2(menu2, menuReformationSchaeffer, "linkbutton", "")
-        document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuReformationSchaeffer + "</a>")
-
-        document.writeln("</nav>");
+        const reformationSchaefferElement = document.createElement("a");
+        reformationSchaefferElement.setAttribute("href", `${root}/reformation/schaeffer/`);
+        reformationSchaefferElement.setAttribute("class", getValue1or2(menu2, menuReformationSchaeffer, "linkbutton", ""));
+        reformationSchaefferElement.textContent = menuReformationSchaeffer;
+        nav2Element.append(reformationSchaefferElement);
     }
 
     if (menu1 === menuWerte) {
-        document.writeln("<nav>");
+        const nav2Element = document.createElement("nav");
+        headerboxElement.append(nav2Element);
 
-        link = root + "/werte/gold/";
-        linkclass = getValue1or2(menu2, menuWerteGold, "linkbutton", "")
-        document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuWerteGold + "</a>")
+        const werteGoldElement = document.createElement("a");
+        werteGoldElement.setAttribute("href", `${root}/werte/gold/`);
+        werteGoldElement.setAttribute("class", getValue1or2(menu2, menuWerteGold, "linkbutton", ""));
+        werteGoldElement.textContent = menuWerteGold;
+        nav2Element.append(werteGoldElement);
 
-        link = root + "/werte/bitcoin/";
-        linkclass = getValue1or2(menu2, menuWerteBitcoin, "linkbutton", "")
-        document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuWerteBitcoin + "</a>")
-
-        document.writeln("</nav>");
+        const werteBitcoinElement = document.createElement("a");
+        werteBitcoinElement.setAttribute("href", `${root}/werte/bitcoin/`);
+        werteBitcoinElement.setAttribute("class", getValue1or2(menu2, menuWerteBitcoin, "linkbutton", ""));
+        werteBitcoinElement.textContent = menuWerteBitcoin;
+        nav2Element.append(werteBitcoinElement);
     }
 
     if (menu1 === menuTools) {
-        document.writeln("<nav>");
+        const nav2Element = document.createElement("nav");
+        headerboxElement.append(nav2Element);
 
-        link = root + "/tools/gebet/";
-        linkclass = getValue1or2(menu2, menuToolsGebet, "linkbutton", "")
-        document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuToolsGebet + "</a>")
+        const toolsGebetElement = document.createElement("a");
+        toolsGebetElement.setAttribute("href", `${root}/tools/gebet/`);
+        toolsGebetElement.setAttribute("class", getValue1or2(menu2, menuToolsGebet, "linkbutton", ""));
+        toolsGebetElement.textContent = menuTools;
+        nav2Element.append(toolsGebetElement);
 
-        link = root + "/tools/qrcode/";
-        linkclass = getValue1or2(menu2, menuToolsQrcode, "linkbutton", "")
-        document.writeln("<a href=\"" + link + "\" class=\"" + linkclass + "\">" + menuToolsQrcode + "</a>")
-
-        document.writeln("</nav>");
+        const toolsQrcodeElement = document.createElement("a");
+        toolsQrcodeElement.setAttribute("href", `${root}/tools/qrcode/`);
+        toolsQrcodeElement.setAttribute("class", getValue1or2(menu2, menuToolsQrcode, "linkbutton", ""));
+        toolsQrcodeElement.textContent = menuTools;
+        nav2Element.append(toolsQrcodeElement);
     }
-
-    document.writeln("</header>");
 }
 
-function footerBodyHtml() {
-    document.writeln("<footer>")
-    document.writeln("</footer>")
-
+function themeScript() {
     const themeButton = document.getElementById('theme-button');
     themeButton.addEventListener('click', () => {
         document.documentElement.classList.toggle('light-theme');
         const light = document.documentElement.classList.contains('light-theme');
         setTheme(light);
     });
-    var sessionTheme = sessionStorage.getItem('theme');
+    let sessionTheme = sessionStorage.getItem('theme');
     if (!sessionTheme) {
         const light = window.matchMedia('(prefers-color-scheme: light)').matches;
         setTheme(light);
@@ -158,9 +219,6 @@ function footerBodyHtml() {
         document.documentElement.classList.remove('light-theme');
         setTheme(false);
     }
-
-    document.writeln("</body>")
-    document.writeln("</html>")
 }
 
 function getValue1or2(key1, key2, value1, value2) {

@@ -8,23 +8,24 @@
     bodyHeader(root, "Gebet", menuTools, menuToolsGebet);
 </script>
 
-<main>
+<main id="mainId">
     <script>
-        var status = sessionStorage.getItem('gebet-status');
+        const main = document.getElementById("mainId");
+        const status = sessionStorage.getItem('gebet-status');
         if ("ziehen" === status) {
             const gebetAnliegen = sessionStorage.getItem('gebet-anliegen');
             if (gebetAnliegen) {
-                document.body.append(getElement("pre", gebetAnliegen));
+                main.append(getElement("pre", gebetAnliegen));
             }
             const spaceBetweenElement = getElement("div", undefined, "flex-space-between separator flex-align-center");
-            document.body.append(spaceBetweenElement);
+            main.append(spaceBetweenElement);
             spaceBetweenElement.append(getSimplebutton("reset()", "Reset"));
             spaceBetweenElement.append(getElement("div", sessionStorage.getItem('gebet-info') ? sessionStorage.getItem('gebet-info') : '—'));
             spaceBetweenElement.append(getSimplebutton("ziehen()", "Ziehen"));
-            document.body.append(getElement("pre", sessionStorage.getItem('gebet-liste')));
+            main.append(getElement("pre", sessionStorage.getItem('gebet-liste')));
         } else {
             const fileElement = getElement("pre");
-            document.body.append(fileElement);
+            main.append(fileElement);
             const inputElement = getElement("input");
             inputElement.setAttribute("type", "file");
             inputElement.setAttribute("id", "gebet-liste-id");
@@ -32,22 +33,22 @@
             fileElement.append(inputElement);
 
             const spaceBetweenButtonElement = getElement("div", undefined, "flex-space-between");
-            document.body.append(spaceBetweenButtonElement);
+            main.append(spaceBetweenButtonElement);
             spaceBetweenButtonElement.append(getSimplebutton("reset()", "Reset"));
             spaceBetweenButtonElement.append(getSimplebutton("laden()", "Laden"));
 
-            document.body.append(getElement("div", "Es gibt verschiedene Formen des Gebets.", "separator"));
-            document.body.append(getElement("div", "Eine Möglichkeit ist es Gebetsanliegen als Listen zu führen und regelmässig für diese Anliegen zu beten."));
-            document.body.append(getElement("div", "Ich stelle hier ein einfaches Werkzeug zur Verfügung, mit welchem Sie zufällig Anliegen aus einer Liste ziehen und dafür beten können."));
+            main.append(getElement("div", "Es gibt verschiedene Formen des Gebets.", "separator"));
+            main.append(getElement("div", "Eine Möglichkeit ist es Gebetsanliegen als Listen zu führen und regelmässig für diese Anliegen zu beten."));
+            main.append(getElement("div", "Ich stelle hier ein einfaches Werkzeug zur Verfügung, mit welchem Sie zufällig Anliegen aus einer Liste ziehen und dafür beten können."));
 
             const spaceBetweenBeispielElement = getElement("div", undefined, "flex-space-between");
-            document.body.append(spaceBetweenBeispielElement);
+            main.append(spaceBetweenBeispielElement);
             const beispielLink = getElement("div");
             beispielLink.innerHTML = "Eine solche Liste besteht aus einer Text- oder Markdown-Datei, z.B. <a href='./Anliegen.txt' target='_blank'>Anliegen.txt</a>.";
             spaceBetweenBeispielElement.append(beispielLink);
             spaceBetweenBeispielElement.append(getSimplebutton("beispiel()", "Beispiel"));
 
-            document.body.append(getElement("div", "Ihre Liste können Sie oben auswählen und laden."));
+            main.append(getElement("div", "Ihre Liste können Sie oben auswählen und laden."));
         }
 
         function reset() {

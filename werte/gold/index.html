@@ -8,7 +8,7 @@
     bodyHeader(root, "Gold", menuWerte, menuWerteGold);
 </script>
 
-<main>
+<main id="mainId">
     <script>
         const feinunze = 31.1034768;
         const xau = JSON.parse(getSyncUrl("https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/xau.json?_=" + new Date().getTime()));
@@ -23,16 +23,17 @@
         const xauEurOz = xauEur.toLocaleString('de-CH');
         const xauEurKg = (xauEur / feinunze * 1000).toLocaleString('de-CH').padStart(11, " ");
 
-        document.body.append(getElement("div", `Goldpreis am ${date}`, "separator"));
+        const main = document.getElementById("mainId");
+        main.append(getElement("div", `Goldpreis am ${date}`, "separator"));
 
         const ozElement = getElement("pre");
-        document.body.append(ozElement);
+        main.append(ozElement);
         ozElement.append(getElement("div", `1 Feinunze XAU = ${xauChfOz} CHF`));
         ozElement.append(getElement("div", `1 Feinunze XAU = ${xauUsdOz} USD`));
         ozElement.append(getElement("div", `1 Feinunze XAU = ${xauEurOz} EUR`));
 
         const kgElement = document.createElement("pre");
-        document.body.append(kgElement);
+        main.append(kgElement);
         kgElement.append(getElement("div", `1 Kilogramm XAU = ${xauChfKg} CHF`));
         kgElement.append(getElement("div", `1 Kilogramm XAU = ${xauUsdKg} USD`));
         kgElement.append(getElement("div", `1 Kilogramm XAU = ${xauEurKg} EUR`));

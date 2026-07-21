@@ -14,31 +14,40 @@
         if ("ziehen" === status) {
             const gebetAnliegen = sessionStorage.getItem('gebet-anliegen');
             if (gebetAnliegen) {
-                document.writeln("<pre>", gebetAnliegen, "</pre>");
+                document.body.append(getElement("pre", gebetAnliegen));
             }
-
-            document.writeln("<div class='flex-space-between separator flex-align-center'>");
-            document.writeln("<button onclick='reset()' class='simplebutton'>Reset</button>");
-            const gebetInfo = sessionStorage.getItem('gebet-info') ? sessionStorage.getItem('gebet-info') : '&mdash;';
-            document.writeln("<div>", gebetInfo, "</div>");
-            document.writeln("<button onclick='ziehen()' class='simplebutton'>Ziehen</button>");
-            document.writeln("</div>");
-
-            const gebetListe = sessionStorage.getItem('gebet-liste');
-            document.writeln("<pre>", gebetListe, "</pre>");
+            const spaceBetweenElement = getElement("div", undefined, "flex-space-between separator flex-align-center");
+            document.body.append(spaceBetweenElement);
+            spaceBetweenElement.append(getSimplebutton("reset()", "Reset"));
+            spaceBetweenElement.append(getElement("div", sessionStorage.getItem('gebet-info') ? sessionStorage.getItem('gebet-info') : '—'));
+            spaceBetweenElement.append(getSimplebutton("ziehen()", "Ziehen"));
+            document.body.append(getElement("pre", sessionStorage.getItem('gebet-liste')));
         } else {
-            document.writeln("<pre><input type='file' id='gebet-liste-id' accept='text/plain,text/markdown' /></pre>");
-            document.writeln("<div class='flex-space-between'>");
-            document.writeln("<button onclick='reset()' class='simplebutton'>Reset</button>");
-            document.writeln("<button onclick='laden()' class='simplebutton'>Laden</button>");
-            document.writeln("</div>");
+            const fileElement = getElement("pre");
+            document.body.append(fileElement);
+            const inputElement = getElement("input");
+            inputElement.setAttribute("type", "file");
+            inputElement.setAttribute("id", "gebet-liste-id");
+            inputElement.setAttribute("accept", "text/plain,text/markdown");
+            fileElement.append(inputElement);
 
-            document.writeln("<div class='separator'>Es gibt verschiedene Formen des Gebets.</div>");
-            document.writeln("<div>Eine Möglichkeit ist es Gebetsanliegen als Listen zu führen und regelmässig für diese Anliegen zu beten.</div>");
-            document.writeln("<div>Ich stelle hier ein einfaches Werkzeug zur Verfügung, mit welchem Sie zufällig Anliegen aus einer Liste ziehen und dafür beten können.</div>");
-            document.writeln("<div><button onclick='beispiel()' class='simplebutton float-right'>Beispiel</button></div>");
-            document.writeln("<div>Eine solche Liste besteht aus einer Text- oder Markdown-Datei, z.B. <a href='./Anliegen.txt' target='_blank'>Anliegen.txt</a>.</div>");
-            document.writeln("<div>Ihre Liste können Sie oben auswählen und laden.</div>");
+            const spaceBetweenButtonElement = getElement("div", undefined, "flex-space-between");
+            document.body.append(spaceBetweenButtonElement);
+            spaceBetweenButtonElement.append(getSimplebutton("reset()", "Reset"));
+            spaceBetweenButtonElement.append(getSimplebutton("laden()", "Laden"));
+
+            document.body.append(getElement("div", "Es gibt verschiedene Formen des Gebets.", "separator"));
+            document.body.append(getElement("div", "Eine Möglichkeit ist es Gebetsanliegen als Listen zu führen und regelmässig für diese Anliegen zu beten."));
+            document.body.append(getElement("div", "Ich stelle hier ein einfaches Werkzeug zur Verfügung, mit welchem Sie zufällig Anliegen aus einer Liste ziehen und dafür beten können."));
+
+            const spaceBetweenBeispielElement = getElement("div", undefined, "flex-space-between");
+            document.body.append(spaceBetweenBeispielElement);
+            const beispielLink = getElement("div");
+            beispielLink.innerHTML = "Eine solche Liste besteht aus einer Text- oder Markdown-Datei, z.B. <a href='./Anliegen.txt' target='_blank'>Anliegen.txt</a>.";
+            spaceBetweenBeispielElement.append(beispielLink);
+            spaceBetweenBeispielElement.append(getSimplebutton("beispiel()", "Beispiel"));
+
+            document.body.append(getElement("div", "Ihre Liste können Sie oben auswählen und laden."));
         }
 
         function reset() {

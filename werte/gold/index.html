@@ -22,22 +22,20 @@
         const xauEur = xau.xau.eur;
         const xauEurOz = xauEur.toLocaleString('de-CH');
         const xauEurKg = (xauEur / feinunze * 1000).toLocaleString('de-CH').padStart(11, " ");
-    </script>
-    <div class="separator">
-        Goldpreis am <script>document.writeln(date)</script>
-    </div>
-    <script>
-        document.writeln("<pre>");
-        document.writeln("<code>1 Feinunze XAU = " + xauChfOz + " CHF</code>");
-        document.writeln("<code>1 Feinunze XAU = " + xauUsdOz + " USD</code>");
-        document.writeln("<code>1 Feinunze XAU = " + xauEurOz + " EUR</code>");
-        document.writeln("</pre>");
 
-        document.writeln("<pre>");
-        document.writeln("<code>1 Kilogramm XAU = " + xauChfKg + " CHF</code>");
-        document.writeln("<code>1 Kilogramm XAU = " + xauUsdKg + " USD</code>");
-        document.writeln("<code>1 Kilogramm XAU = " + xauEurKg + " EUR</code>");
-        document.writeln("</pre>");
+        document.body.append(getElement("div", `Goldpreis am ${date}`, "separator"));
+
+        const ozElement = getElement("pre");
+        document.body.append(ozElement);
+        ozElement.append(getElement("div", `1 Feinunze XAU = ${xauChfOz} CHF`));
+        ozElement.append(getElement("div", `1 Feinunze XAU = ${xauUsdOz} USD`));
+        ozElement.append(getElement("div", `1 Feinunze XAU = ${xauEurOz} EUR`));
+
+        const kgElement = document.createElement("pre");
+        document.body.append(kgElement);
+        kgElement.append(getElement("div", `1 Kilogramm XAU = ${xauChfKg} CHF`));
+        kgElement.append(getElement("div", `1 Kilogramm XAU = ${xauUsdKg} USD`));
+        kgElement.append(getElement("div", `1 Kilogramm XAU = ${xauEurKg} EUR`));
     </script>
 
     <div id="goldId"></div>

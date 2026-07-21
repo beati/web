@@ -15,187 +15,110 @@ const menuToolsQrcode = "QR-Code";
 const menuKontakt = "Kontakt";
 
 function html() {
-    const htmlElement = document.createElement("html");
-    htmlElement.setAttribute("lang", "de-CH");
-    document = htmlElement;
+    document.documentElement.lang = "de-CH";
 }
 
 function head(root, title, description) {
-    document.head = document.createElement("head");
+    document.head = getElement("head");
 
-    const charsetElement = document.createElement("meta");
+    const charsetElement = getElement("meta");
     charsetElement.setAttribute("charset", "UTF-8");
     document.head.append(charsetElement);
 
-    const viewportElement = document.createElement("meta");
+    const viewportElement = getElement("meta");
     viewportElement.setAttribute("name", "viewport");
     viewportElement.setAttribute("content", "width=device-width, initial-scale=1.0");
     document.head.append(viewportElement);
 
-    const simpleCssElement = document.createElement("link");
+    const simpleCssElement = getElement("link");
     simpleCssElement.setAttribute("rel", "stylesheet");
     simpleCssElement.setAttribute("href", `${root}/common/simple.css`);
     document.head.append(simpleCssElement);
 
-    const stylesCssElement = document.createElement("link");
+    const stylesCssElement = getElement("link");
     stylesCssElement.setAttribute("rel", "stylesheet");
     stylesCssElement.setAttribute("href", `${root}/common/styles.css`);
     document.head.append(stylesCssElement);
 
-    const faviconElement = document.createElement("link");
+    const faviconElement = getElement("link");
     faviconElement.setAttribute("rel", "icon");
     faviconElement.setAttribute("type", "image/x-icon");
     faviconElement.setAttribute("href", `${root}/common/favicon.ico`);
     document.head.append(faviconElement);
 
-    const titleElement = document.createElement("title");
-    titleElement.textContent = title;
-    document.head.append(titleElement);
+    document.head.append(getElement("title", title));
 
-    const descriptionElement = document.createElement("meta");
+    const descriptionElement = getElement("meta");
     descriptionElement.setAttribute("name", "description");
     descriptionElement.setAttribute("content", description);
     document.head.append(descriptionElement);
 }
 
 function bodyHeader(root, title, menu1, menu2) {
-    document.body = document.createElement("body");
+    document.body = getElement("body");
 
-    const headerElement = document.createElement("header");
+    const headerElement = getElement("header");
     document.body.append(headerElement);
 
-    const headerboxElement = document.createElement("div");
-    headerboxElement.setAttribute("class", "headerbox");
+    const headerboxElement = getElement("div", undefined, "headerbox");
     headerElement.append(headerboxElement);
 
-    const spaceBetweenElement = document.createElement("div");
-    spaceBetweenElement.setAttribute("class", "flex-space-between flex-align-center");
+    const spaceBetweenElement = getElement("div", undefined, "flex-space-between flex-align-center");
     headerboxElement.append(spaceBetweenElement);
 
-    const titleElement = document.createElement("h1");
-    titleElement.textContent = title;
-    spaceBetweenElement.append(titleElement);
+    spaceBetweenElement.append(getElement("h1", title));
 
-    const themeElement = document.createElement("a");
+    const themeElement = getElement("a");
     themeElement.setAttribute("id", "theme-button");
     themeElement.setAttribute("class", "clickable theme-button");
     spaceBetweenElement.append(themeElement);
     themeScript();
 
-    const navElement = document.createElement("nav");
+    const navElement = getElement("nav");
     headerboxElement.append(navElement);
 
-    const homeimgElement = document.createElement("img");
+    const homeimgElement = getElement("img");
     homeimgElement.setAttribute("src", getValue1or2(menu1, menuHome, root + "/common/infoSnow18x18.png", root + "/common/favicon.ico"));
     homeimgElement.setAttribute("alt", "Home");
-    const homeElement = document.createElement("a");
+    const homeElement = getElement("a");
     homeElement.setAttribute("href", `${root}/`);
     homeElement.setAttribute("class", getValue1or2(menu1, menuHome, "linkbutton", ""));
     homeElement.append(homeimgElement);
     navElement.append(homeElement);
 
-    const evangeliumElement = document.createElement("a");
-    evangeliumElement.setAttribute("href", `${root}/evangelium/`);
-    evangeliumElement.setAttribute("class", getValue1or2(menu1, menuEvangelium, "linkbutton", ""));
-    evangeliumElement.textContent = menuEvangelium;
-    navElement.append(evangeliumElement);
-
-    const reformationElement = document.createElement("a");
-    reformationElement.setAttribute("href", `${root}/reformation/`);
-    reformationElement.setAttribute("class", getValue1or2(menu1, menuReformation, "linkbutton", ""));
-    reformationElement.textContent = menuReformation;
-    navElement.append(reformationElement);
-
-    const entwicklungElement = document.createElement("a");
-    entwicklungElement.setAttribute("href", `${root}/entwicklung/`);
-    entwicklungElement.setAttribute("class", getValue1or2(menu1, menuEntwicklung, "linkbutton", ""));
-    entwicklungElement.textContent = menuEntwicklung;
-    navElement.append(entwicklungElement);
-
-    const werteElement = document.createElement("a");
-    werteElement.setAttribute("href", `${root}/werte/`);
-    werteElement.setAttribute("class", getValue1or2(menu1, menuWerte, "linkbutton", ""));
-    werteElement.textContent = menuWerte;
-    navElement.append(werteElement);
-
-    const toolsElement = document.createElement("a");
-    toolsElement.setAttribute("href", `${root}/tools/`);
-    toolsElement.setAttribute("class", getValue1or2(menu1, menuTools, "linkbutton", ""));
-    toolsElement.textContent = menuTools;
-    navElement.append(toolsElement);
-
-    const kontaktElement = document.createElement("a");
-    kontaktElement.setAttribute("href", `${root}/kontakt/`);
-    kontaktElement.setAttribute("class", getValue1or2(menu1, menuKontakt, "linkbutton", ""));
-    kontaktElement.textContent = menuKontakt;
-    navElement.append(kontaktElement);
+    navElement.append(getLinkbutton(`${root}/evangelium/`, menu1, menuEvangelium));
+    navElement.append(getLinkbutton(`${root}/reformation/`, menu1, menuReformation));
+    navElement.append(getLinkbutton(`${root}/entwicklung/`, menu1, menuEntwicklung));
+    navElement.append(getLinkbutton(`${root}/werte/`, menu1, menuWerte));
+    navElement.append(getLinkbutton(`${root}/tools/`, menu1, menuTools));
+    navElement.append(getLinkbutton(`${root}/kontakt/`, menu1, menuKontakt));
 
     if (menu1 === menuEvangelium) {
-        const nav2Element = document.createElement("nav");
+        const nav2Element = getElement("nav");
         headerboxElement.append(nav2Element);
-
-        const evangeliumBibelElement = document.createElement("a");
-        evangeliumBibelElement.setAttribute("href", `${root}/evangelium/bibel/`);
-        evangeliumBibelElement.setAttribute("class", getValue1or2(menu2, menuEvangeliumBibel, "linkbutton", ""));
-        evangeliumBibelElement.textContent = menuEvangeliumBibel;
-        nav2Element.append(evangeliumBibelElement);
-
-        const evangeliumBibelleseplanElement = document.createElement("a");
-        evangeliumBibelleseplanElement.setAttribute("href", `${root}/evangelium/bibelleseplan/`);
-        evangeliumBibelleseplanElement.setAttribute("class", getValue1or2(menu2, menuEvangeliumBibelleseplan, "linkbutton", ""));
-        evangeliumBibelleseplanElement.textContent = menuEvangeliumBibelleseplan;
-        nav2Element.append(evangeliumBibelleseplanElement);
+        nav2Element.append(getLinkbutton(`${root}/evangelium/bibel/`, menu2, menuEvangeliumBibel));
+        nav2Element.append(getLinkbutton(`${root}/evangelium/bibelleseplan/`, menu2, menuEvangeliumBibelleseplan));
     }
 
     if (menu1 === menuReformation) {
         const nav2Element = document.createElement("nav");
         headerboxElement.append(nav2Element);
-
-        const reformationZwingliElement = document.createElement("a");
-        reformationZwingliElement.setAttribute("href", `${root}/reformation/zwingli/`);
-        reformationZwingliElement.setAttribute("class", getValue1or2(menu2, menuReformationZwingli, "linkbutton", ""));
-        reformationZwingliElement.textContent = menuReformationZwingli;
-        nav2Element.append(reformationZwingliElement);
-
-        const reformationSchaefferElement = document.createElement("a");
-        reformationSchaefferElement.setAttribute("href", `${root}/reformation/schaeffer/`);
-        reformationSchaefferElement.setAttribute("class", getValue1or2(menu2, menuReformationSchaeffer, "linkbutton", ""));
-        reformationSchaefferElement.textContent = menuReformationSchaeffer;
-        nav2Element.append(reformationSchaefferElement);
+        nav2Element.append(getLinkbutton(`${root}/reformation/zwingli/`, menu2, menuReformationZwingli));
+        nav2Element.append(getLinkbutton(`${root}/reformation/schaeffer/`, menu2, menuReformationSchaeffer));
     }
 
     if (menu1 === menuWerte) {
         const nav2Element = document.createElement("nav");
         headerboxElement.append(nav2Element);
-
-        const werteGoldElement = document.createElement("a");
-        werteGoldElement.setAttribute("href", `${root}/werte/gold/`);
-        werteGoldElement.setAttribute("class", getValue1or2(menu2, menuWerteGold, "linkbutton", ""));
-        werteGoldElement.textContent = menuWerteGold;
-        nav2Element.append(werteGoldElement);
-
-        const werteBitcoinElement = document.createElement("a");
-        werteBitcoinElement.setAttribute("href", `${root}/werte/bitcoin/`);
-        werteBitcoinElement.setAttribute("class", getValue1or2(menu2, menuWerteBitcoin, "linkbutton", ""));
-        werteBitcoinElement.textContent = menuWerteBitcoin;
-        nav2Element.append(werteBitcoinElement);
+        nav2Element.append(getLinkbutton(`${root}/werte/gold/`, menu2, menuWerteGold));
+        nav2Element.append(getLinkbutton(`${root}/werte/bitcoin/`, menu2, menuWerteBitcoin));
     }
 
     if (menu1 === menuTools) {
         const nav2Element = document.createElement("nav");
         headerboxElement.append(nav2Element);
-
-        const toolsGebetElement = document.createElement("a");
-        toolsGebetElement.setAttribute("href", `${root}/tools/gebet/`);
-        toolsGebetElement.setAttribute("class", getValue1or2(menu2, menuToolsGebet, "linkbutton", ""));
-        toolsGebetElement.textContent = menuTools;
-        nav2Element.append(toolsGebetElement);
-
-        const toolsQrcodeElement = document.createElement("a");
-        toolsQrcodeElement.setAttribute("href", `${root}/tools/qrcode/`);
-        toolsQrcodeElement.setAttribute("class", getValue1or2(menu2, menuToolsQrcode, "linkbutton", ""));
-        toolsQrcodeElement.textContent = menuTools;
-        nav2Element.append(toolsQrcodeElement);
+        nav2Element.append(getLinkbutton(`${root}/tools/gebet/`, menu2, menuToolsGebet));
+        nav2Element.append(getLinkbutton(`${root}/tools/qrcode/`, menu2, menuToolsQrcode));
     }
 }
 
@@ -250,8 +173,37 @@ function setTheme(light) {
     if (light) {
         sessionStorage.setItem('theme', 'light')
         themeButton.innerHTML = '&#x25CF;';
+        themeButton.setAttribute("title", "Dark");
     } else {
         sessionStorage.setItem('theme', 'dark')
         themeButton.innerHTML = '&#x25CB;';
+        themeButton.setAttribute("title", "Light");
     }
+}
+
+function getElement(tag, append, clazz) {
+    const element = document.createElement(tag);
+    if (append) {
+        element.append(append);
+    }
+    if (clazz) {
+        element.setAttribute("class", clazz);
+    }
+    return element;
+}
+
+function getLinkbutton(href, menu, append) {
+    const element = document.createElement("a");
+    element.setAttribute("href", href);
+    element.setAttribute("class", getValue1or2(menu, append, "linkbutton", ""));
+    element.append(append);
+    return element;
+}
+
+function getSimplebutton(onclick, text) {
+    const element = document.createElement("button");
+    element.setAttribute("onclick", onclick);
+    element.setAttribute("class", "simplebutton");
+    element.append(text);
+    return element;
 }

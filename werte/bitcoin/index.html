@@ -15,16 +15,14 @@
         const btcChfLast = ticker.CHF.last.toLocaleString('de-CH').padStart(10, " ");
         const btcUsdLast = ticker.USD.last.toLocaleString('de-CH').padStart(10, " ");
         const btcEurLast = ticker.EUR.last.toLocaleString('de-CH').padStart(10, " ");
-    </script>
-    <div class="separator">
-        Bitcoinpreis am <script>document.writeln(now)</script>
-    </div>
-    <script>
-        document.writeln("<pre>");
-        document.writeln("<code>1 BTC = " + btcChfLast + " CHF</code>");
-        document.writeln("<code>1 BTC = " + btcUsdLast + " USD</code>");
-        document.writeln("<code>1 BTC = " + btcEurLast + " EUR</code>");
-        document.writeln("</pre>");
+
+        document.body.append(getElement("div", `Bitcoinpreis am ${now}`, "separator"));
+
+        const preElement = document.createElement("pre");
+        document.body.append(preElement);
+        preElement.append(getElement("div", `1 BTC = ${btcChfLast} CHF`));
+        preElement.append(getElement("div", `1 BTC = ${btcUsdLast} USD`));
+        preElement.append(getElement("div", `1 BTC = ${btcEurLast} EUR`));
     </script>
 
     <div id="bitcoinId"></div>

@@ -123,7 +123,7 @@ function bodyHeader(root, title, menu1, menu2) {
 }
 
 function themeScript() {
-    const themeButton = getElement('theme-button');
+    const themeButton = document.getElementById('theme-button');
     themeButton.addEventListener('click', () => {
         document.documentElement.classList.toggle('light-theme');
         const light = document.documentElement.classList.contains('light-theme');

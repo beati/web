@@ -19,7 +19,7 @@
         const main = document.getElementById("mainId");
         main.append(getElement("div", `Bitcoinpreis am ${now}`, "separator"));
 
-        const preElement = document.createElement("pre");
+        const preElement = getElement("pre");
         main.append(preElement);
         preElement.append(getElement("div", `1 BTC = ${btcChfLast} CHF`));
         preElement.append(getElement("div", `1 BTC = ${btcUsdLast} USD`));

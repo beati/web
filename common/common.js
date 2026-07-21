@@ -101,21 +101,21 @@ function bodyHeader(root, title, menu1, menu2) {
     }
 
     if (menu1 === menuReformation) {
-        const nav2Element = document.createElement("nav");
+        const nav2Element = getElement("nav");
         headerboxElement.append(nav2Element);
         nav2Element.append(getLinkbutton(`${root}/reformation/zwingli/`, menu2, menuReformationZwingli));
         nav2Element.append(getLinkbutton(`${root}/reformation/schaeffer/`, menu2, menuReformationSchaeffer));
     }
 
     if (menu1 === menuWerte) {
-        const nav2Element = document.createElement("nav");
+        const nav2Element = getElement("nav");
         headerboxElement.append(nav2Element);
         nav2Element.append(getLinkbutton(`${root}/werte/gold/`, menu2, menuWerteGold));
         nav2Element.append(getLinkbutton(`${root}/werte/bitcoin/`, menu2, menuWerteBitcoin));
     }
 
     if (menu1 === menuTools) {
-        const nav2Element = document.createElement("nav");
+        const nav2Element = getElement("nav");
         headerboxElement.append(nav2Element);
         nav2Element.append(getLinkbutton(`${root}/tools/gebet/`, menu2, menuToolsGebet));
         nav2Element.append(getLinkbutton(`${root}/tools/qrcode/`, menu2, menuToolsQrcode));
@@ -123,7 +123,7 @@ function bodyHeader(root, title, menu1, menu2) {
 }
 
 function themeScript() {
-    const themeButton = document.getElementById('theme-button');
+    const themeButton = getElement('theme-button');
     themeButton.addEventListener('click', () => {
         document.documentElement.classList.toggle('light-theme');
         const light = document.documentElement.classList.contains('light-theme');
@@ -193,7 +193,7 @@ function getElement(tag, append, clazz) {
 }
 
 function getLinkbutton(href, menu, append) {
-    const element = document.createElement("a");
+    const element = getElement("a");
     element.setAttribute("href", href);
     element.setAttribute("class", getValue1or2(menu, append, "linkbutton", ""));
     element.append(append);
@@ -201,7 +201,7 @@ function getLinkbutton(href, menu, append) {
 }
 
 function getSimplebutton(onclick, text) {
-    const element = document.createElement("button");
+    const element = getElement("button");
     element.setAttribute("onclick", onclick);
     element.setAttribute("class", "simplebutton");
     element.append(text);

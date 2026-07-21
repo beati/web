@@ -32,7 +32,7 @@
         ozElement.append(getElement("div", `1 Feinunze XAU = ${xauUsdOz} USD`));
         ozElement.append(getElement("div", `1 Feinunze XAU = ${xauEurOz} EUR`));
 
-        const kgElement = document.createElement("pre");
+        const kgElement = getElement("pre");
         main.append(kgElement);
         kgElement.append(getElement("div", `1 Kilogramm XAU = ${xauChfKg} CHF`));
         kgElement.append(getElement("div", `1 Kilogramm XAU = ${xauUsdKg} USD`));

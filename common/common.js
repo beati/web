@@ -1,18 +1,3 @@
-const menuHome = "Home";
-const menuEvangelium = "Evangelium";
-const menuEvangeliumBibel = "Bibel";
-const menuEvangeliumBibelleseplan = "Plan";
-const menuEntwicklung = "Entwicklung";
-const menuReformation = "Reformation";
-const menuReformationZwingli = "Zwingli";
-const menuReformationSchaeffer = "Schaeffer";
-const menuWerte = "Werte";
-const menuWerteGold = "Gold";
-const menuWerteBitcoin = "Bitcoin";
-const menuTools = "Tools";
-const menuToolsGebet = "Gebet";
-const menuToolsQrcode = "QR-Code";
-const menuKontakt = "Kontakt";
 
 function html() {
     document.documentElement.lang = "de-CH";
@@ -53,6 +38,22 @@ function head(root, title, description) {
     descriptionElement.setAttribute("content", description);
     document.head.append(descriptionElement);
 }
+
+const menuHome = "Home";
+const menuEvangelium = "Evangelium";
+const menuEvangeliumBibel = "Bibel";
+const menuEvangeliumBibelleseplan = "Plan";
+const menuEntwicklung = "Entwicklung";
+const menuReformation = "Reformation";
+const menuReformationZwingli = "Zwingli";
+const menuReformationSchaeffer = "Schaeffer";
+const menuWerte = "Werte";
+const menuWerteGold = "Gold";
+const menuWerteBitcoin = "Bitcoin";
+const menuTools = "Tools";
+const menuToolsGebet = "Gebet";
+const menuToolsQrcode = "QR-Code";
+const menuKontakt = "Kontakt";
 
 function bodyHeader(root, title, menu1, menu2) {
     document.body = getElement("body");

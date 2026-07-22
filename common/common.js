@@ -72,7 +72,6 @@ function bodyHeader(root, title, menu1, menu2) {
     themeElement.setAttribute("id", "theme-button");
     themeElement.setAttribute("class", "clickable theme-button");
     spaceBetweenElement.append(themeElement);
-    themeScript();
 
     const navElement = getElement("nav");
     headerboxElement.append(navElement);
@@ -120,6 +119,10 @@ function bodyHeader(root, title, menu1, menu2) {
         nav2Element.append(getLinkbutton(`${root}/tools/gebet/`, menu2, menuToolsGebet));
         nav2Element.append(getLinkbutton(`${root}/tools/qrcode/`, menu2, menuToolsQrcode));
     }
+}
+
+function footer() {
+    themeScript();
 }
 
 function themeScript() {

@@ -5,9 +5,10 @@
     const root = "..";
     html();
     head(root, "Reformation | Beat Gubser", "Die Reformation");
-    bodyHeader(root, "Die Reformation", menuReformation, menuReformation);
 </script>
 
+<body>
+<script>bodyHeader(root, "Die Reformation", menuReformation, menuReformation)</script>
 <main>
     <div class="separator">
         Am 31. Oktober 1517 schlug Martin Luther seine 95 Thesen an die Kirchentür von Wittenberg.
@@ -48,7 +49,5 @@
         <iframe width='320' height='240' src='https://www.youtube.com/embed/DG2CNmZ7cHE' title='Episode IV &ndash; Die Reformation' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
     </div>
 </main>
-
-<footer>
-    <script>footer()</script>
-</footer>
+<script>bodyFooter()</script>
+</body>

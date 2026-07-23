@@ -96,8 +96,6 @@ function getLinkbutton(href, menu, append) {
 }
 
 function bodyHeader(root, title, menu1, menu2) {
-    document.body = getElement("body");
-
     const headerElement = getElement("header");
     document.body.append(headerElement);
 
@@ -205,7 +203,9 @@ function themeScript() {
     }
 }
 
-function footer() {
+function bodyFooter() {
+    const footerElement = getElement("footer");
+    document.body.append(footerElement);
     themeScript();
 }
 

@@ -5,9 +5,10 @@
     const root = "../..";
     html();
     head(root, "Bitcoin | Beat Gubser", "Bitcoin");
-    bodyHeader(root, "Bitcoin", menuWerte, menuWerteBitcoin);
 </script>
 
+<body>
+<script>bodyHeader(root, "Bitcoin", menuWerte, menuWerteBitcoin)</script>
 <main id="mainId">
     <script>
         const now = new Date(Date.now()).toLocaleString("de");
@@ -31,7 +32,5 @@
         getAsyncUrlForId("bitcoin.html", "bitcoinId");
     </script>
 </main>
-
-<footer>
-    <script>footer()</script>
-</footer>
+<script>bodyFooter()</script>
+</body>

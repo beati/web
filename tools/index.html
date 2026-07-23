@@ -5,9 +5,10 @@
     const root = "..";
     html();
     head(root, "Tools | Beat Gubser", "Tools");
-    bodyHeader(root, "Tools", menuTools, menuTools);
 </script>
 
+<body>
+<script>bodyHeader(root, "Tools", menuTools, menuTools)</script>
 <main>
     <div class="separator">
         Nützliche Werkzeuge.
@@ -19,7 +20,5 @@
         <a href="./qrcode/">QR-Code</a> &mdash; Einen QR-Code generieren.
     </div>
 </main>
-
-<footer>
-    <script>footer()</script>
-</footer>
+<script>bodyFooter()</script>
+</body>

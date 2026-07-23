@@ -5,9 +5,10 @@
     const root = "..";
     html();
     head(root, "Entwicklung | Beat Gubser", "Software Entwicklung");
-    bodyHeader(root, "Software Entwicklung", menuEntwicklung, menuEntwicklung);
 </script>
 
+<body>
+<script>bodyHeader(root, "Software Entwicklung", menuEntwicklung, menuEntwicklung)</script>
 <main>
     <div class="separator">
         Meine öffentlichen Entwicklungsaktivitäten.
@@ -34,7 +35,5 @@
         <a href="https://github.com/beati" target="_blank">github.com/beati</a> &mdash; Mein Github Konto.
     </div>
 </main>
-
-<footer>
-    <script>footer()</script>
-</footer>
+<script>bodyFooter()</script>
+</body>

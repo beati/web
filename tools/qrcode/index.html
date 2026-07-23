@@ -5,9 +5,10 @@
     const root = "../..";
     html();
     head(root, "QR-Code Generator | Beat Gubser", "QR-Code Generator");
-    bodyHeader(root, "QR-Code Generator", menuTools, menuToolsQrcode);
 </script>
 
+<body>
+<script>bodyHeader(root, "QR-Code Generator", menuTools, menuToolsQrcode)</script>
 <main>
     <script type="text/javascript" src="../../node_modules/qrcode-generator/dist/qrcode.js"></script>
     <script>
@@ -40,7 +41,5 @@
         <div id="qrcodePlaceholder" class="flex-center"></div>
     </div>
 </main>
-
-<footer>
-    <script>footer()</script>
-</footer>
+<script>bodyFooter()</script>
+</body>

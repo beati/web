@@ -5,9 +5,10 @@
     const root = "../..";
     html();
     head(root, "Gold | Beat Gubser", "Gold");
-    bodyHeader(root, "Gold", menuWerte, menuWerteGold);
 </script>
 
+<body>
+<script>bodyHeader(root, "Gold", menuWerte, menuWerteGold)</script>
 <main id="mainId">
     <script>
         const feinunze = 31.1034768;
@@ -44,7 +45,5 @@
         getAsyncUrlForId("gold.html", "goldId");
     </script>
 </main>
-
-<footer>
-    <script>footer()</script>
-</footer>
+<script>bodyFooter()</script>
+</body>

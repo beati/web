@@ -5,16 +5,15 @@
     const root = "../..";
     html();
     head(root, "Francis Schaeffer | Beat Gubser", "Francis Schaeffer");
-    bodyHeader(root, "Francis Schaeffer", menuReformation, menuReformationSchaeffer);
 </script>
 
+<body>
+<script>bodyHeader(root, "Francis Schaeffer", menuReformation, menuReformationSchaeffer)</script>
 <main>
     <div id="schaefferId" class="separator"></div>
     <script>
         getAsyncUrlForId("francis-schaeffer.html", "schaefferId");
     </script>
 </main>
-
-<footer>
-    <script>footer()</script>
-</footer>
+<script>bodyFooter()</script>
+</body>

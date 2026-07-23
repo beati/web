@@ -5,9 +5,10 @@
     const root = "..";
     html();
     head(root, "Kontakt | Beat Gubser", "Kontakt");
-    bodyHeader(root, "Kontakt", menuKontakt, menuKontakt);
 </script>
 
+<body>
+<script>bodyHeader(root, "Kontakt", menuKontakt, menuKontakt)</script>
 <main>
     <h2>Kontaktaufnahme</h2>
     <div class="separator">
@@ -25,7 +26,5 @@
         Diese Seite wird Open Source mit Html, Css, JavaScript, <a href="https://simplecss.org/" target="_blank">Simple.css</a> und <a href="https://github.com/beati/web" target="_blank">GitHub</a> entwickelt und betrieben.
     </div>
 </main>
-
-<footer>
-    <script>footer()</script>
-</footer>
+<script>bodyFooter()</script>
+</body>

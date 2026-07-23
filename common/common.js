@@ -1,50 +1,54 @@
-
 function html() {
     document.documentElement.lang = "de-CH";
 }
 
-function getElement(tag, append, clazz) {
-    const element = document.createElement(tag);
-    if (append) {
-        element.append(append);
-    }
-    if (clazz) {
-        element.setAttribute("class", clazz);
-    }
-    return element;
-}
-
 function head(root, title, description) {
-    document.head = getElement("head");
+    document.head = document.createElement("head");
 
-    const simpleCssElement = getElement("link");
+    const simpleCss = `${root}/common/simple.css`;
+    const simpleCssPreloadElement = document.createElement("link");
+    simpleCssPreloadElement.setAttribute("rel", "preload");
+    simpleCssPreloadElement.setAttribute("href", simpleCss);
+    simpleCssPreloadElement.setAttribute("as", "style");
+    document.head.append(simpleCssPreloadElement);
+
+    const stylesCss = `${root}/common/styles.css`;
+    const stylesCssPreloadElement = document.createElement("link");
+    stylesCssPreloadElement.setAttribute("rel", "preload");
+    stylesCssPreloadElement.setAttribute("href", stylesCss);
+    stylesCssPreloadElement.setAttribute("as", "style");
+    document.head.append(stylesCssPreloadElement);
+
+    const simpleCssElement = document.createElement("link");
     simpleCssElement.setAttribute("rel", "stylesheet");
-    simpleCssElement.setAttribute("href", `${root}/common/simple.css`);
+    simpleCssElement.setAttribute("href", simpleCss);
     document.head.append(simpleCssElement);
 
-    const stylesCssElement = getElement("link");
+    const stylesCssElement = document.createElement("link");
     stylesCssElement.setAttribute("rel", "stylesheet");
-    stylesCssElement.setAttribute("href", `${root}/common/styles.css`);
+    stylesCssElement.setAttribute("href", stylesCss);
     document.head.append(stylesCssElement);
 
-    const faviconElement = getElement("link");
+    const faviconElement = document.createElement("link");
     faviconElement.setAttribute("rel", "icon");
     faviconElement.setAttribute("type", "image/x-icon");
     faviconElement.setAttribute("href", `${root}/common/favicon.ico`);
     document.head.append(faviconElement);
 
-    document.head.append(getElement("title", title));
+    const titleElement = document.createElement("title");
+    titleElement.append(title);
+    document.head.append(titleElement);
 
-    const charsetElement = getElement("meta");
+    const charsetElement = document.createElement("meta");
     charsetElement.setAttribute("charset", "UTF-8");
     document.head.append(charsetElement);
 
-    const viewportElement = getElement("meta");
+    const viewportElement = document.createElement("meta");
     viewportElement.setAttribute("name", "viewport");
     viewportElement.setAttribute("content", "width=device-width, initial-scale=1.0");
     document.head.append(viewportElement);
 
-    const descriptionElement = getElement("meta");
+    const descriptionElement = document.createElement("meta");
     descriptionElement.setAttribute("name", "description");
     descriptionElement.setAttribute("content", description);
     document.head.append(descriptionElement);
@@ -65,6 +69,17 @@ const menuTools = "Tools";
 const menuToolsGebet = "Gebet";
 const menuToolsQrcode = "QR-Code";
 const menuKontakt = "Kontakt";
+
+function getElement(tag, append, clazz) {
+    const element = document.createElement(tag);
+    if (append) {
+        element.append(append);
+    }
+    if (clazz) {
+        element.setAttribute("class", clazz);
+    }
+    return element;
+}
 
 function getValue1or2(key1, key2, value1, value2) {
     if (key1 === key2) {

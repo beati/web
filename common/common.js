@@ -3,8 +3,6 @@ function html() {
 }
 
 function head(root, title, description) {
-    document.head = document.createElement("head");
-
     const simpleCss = `${root}/common/simple.css`;
     const simpleCssPreloadElement = document.createElement("link");
     simpleCssPreloadElement.setAttribute("rel", "preload");

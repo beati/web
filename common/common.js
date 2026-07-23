@@ -3,17 +3,19 @@ function html() {
     document.documentElement.lang = "de-CH";
 }
 
+function getElement(tag, append, clazz) {
+    const element = document.createElement(tag);
+    if (append) {
+        element.append(append);
+    }
+    if (clazz) {
+        element.setAttribute("class", clazz);
+    }
+    return element;
+}
+
 function head(root, title, description) {
     document.head = getElement("head");
-
-    const charsetElement = getElement("meta");
-    charsetElement.setAttribute("charset", "UTF-8");
-    document.head.append(charsetElement);
-
-    const viewportElement = getElement("meta");
-    viewportElement.setAttribute("name", "viewport");
-    viewportElement.setAttribute("content", "width=device-width, initial-scale=1.0");
-    document.head.append(viewportElement);
 
     const simpleCssElement = getElement("link");
     simpleCssElement.setAttribute("rel", "stylesheet");
@@ -32,6 +34,15 @@ function head(root, title, description) {
     document.head.append(faviconElement);
 
     document.head.append(getElement("title", title));
+
+    const charsetElement = getElement("meta");
+    charsetElement.setAttribute("charset", "UTF-8");
+    document.head.append(charsetElement);
+
+    const viewportElement = getElement("meta");
+    viewportElement.setAttribute("name", "viewport");
+    viewportElement.setAttribute("content", "width=device-width, initial-scale=1.0");
+    document.head.append(viewportElement);
 
     const descriptionElement = getElement("meta");
     descriptionElement.setAttribute("name", "description");
@@ -54,6 +65,22 @@ const menuTools = "Tools";
 const menuToolsGebet = "Gebet";
 const menuToolsQrcode = "QR-Code";
 const menuKontakt = "Kontakt";
+
+function getValue1or2(key1, key2, value1, value2) {
+    if (key1 === key2) {
+        return value1;
+    } else {
+        return value2;
+    }
+}
+
+function getLinkbutton(href, menu, append) {
+    const element = getElement("a");
+    element.setAttribute("href", href);
+    element.setAttribute("class", getValue1or2(menu, append, "linkbutton", ""));
+    element.append(append);
+    return element;
+}
 
 function bodyHeader(root, title, menu1, menu2) {
     document.body = getElement("body");
@@ -122,8 +149,25 @@ function bodyHeader(root, title, menu1, menu2) {
     }
 }
 
-function footer() {
-    themeScript();
+function getSimplebutton(onclick, text) {
+    const element = getElement("button");
+    element.setAttribute("onclick", onclick);
+    element.setAttribute("class", "simplebutton");
+    element.append(text);
+    return element;
+}
+
+function setTheme(light) {
+    const themeButton = document.getElementById('theme-button');
+    if (light) {
+        sessionStorage.setItem('theme', 'light')
+        themeButton.innerHTML = '&#x25CF;';
+        themeButton.setAttribute("title", "Dark");
+    } else {
+        sessionStorage.setItem('theme', 'dark')
+        themeButton.innerHTML = '&#x25CB;';
+        themeButton.setAttribute("title", "Light");
+    }
 }
 
 function themeScript() {
@@ -148,12 +192,8 @@ function themeScript() {
     }
 }
 
-function getValue1or2(key1, key2, value1, value2) {
-    if (key1 === key2) {
-        return value1;
-    } else {
-        return value2;
-    }
+function footer() {
+    themeScript();
 }
 
 function getSyncUrl(url) {
@@ -170,44 +210,4 @@ function getAsyncUrlForId(url, id) {
         document.getElementById(id).innerHTML = request.responseText;
     }
     request.send();
-}
-
-function setTheme(light) {
-    const themeButton = document.getElementById('theme-button');
-    if (light) {
-        sessionStorage.setItem('theme', 'light')
-        themeButton.innerHTML = '&#x25CF;';
-        themeButton.setAttribute("title", "Dark");
-    } else {
-        sessionStorage.setItem('theme', 'dark')
-        themeButton.innerHTML = '&#x25CB;';
-        themeButton.setAttribute("title", "Light");
-    }
-}
-
-function getElement(tag, append, clazz) {
-    const element = document.createElement(tag);
-    if (append) {
-        element.append(append);
-    }
-    if (clazz) {
-        element.setAttribute("class", clazz);
-    }
-    return element;
-}
-
-function getLinkbutton(href, menu, append) {
-    const element = getElement("a");
-    element.setAttribute("href", href);
-    element.setAttribute("class", getValue1or2(menu, append, "linkbutton", ""));
-    element.append(append);
-    return element;
-}
-
-function getSimplebutton(onclick, text) {
-    const element = getElement("button");
-    element.setAttribute("onclick", onclick);
-    element.setAttribute("class", "simplebutton");
-    element.append(text);
-    return element;
 }

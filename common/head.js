@@ -3,28 +3,14 @@ function html() {
 }
 
 function head(root, title, description) {
-    const simpleCss = `${root}/common/simple.css`;
-    const simpleCssPreloadElement = document.createElement("link");
-    simpleCssPreloadElement.setAttribute("rel", "preload");
-    simpleCssPreloadElement.setAttribute("href", simpleCss);
-    simpleCssPreloadElement.setAttribute("as", "style");
-    document.head.append(simpleCssPreloadElement);
-
-    const stylesCss = `${root}/common/styles.css`;
-    const stylesCssPreloadElement = document.createElement("link");
-    stylesCssPreloadElement.setAttribute("rel", "preload");
-    stylesCssPreloadElement.setAttribute("href", stylesCss);
-    stylesCssPreloadElement.setAttribute("as", "style");
-    document.head.append(stylesCssPreloadElement);
-
     const simpleCssElement = document.createElement("link");
     simpleCssElement.setAttribute("rel", "stylesheet");
-    simpleCssElement.setAttribute("href", simpleCss);
+    simpleCssElement.setAttribute("href", `${root}/common/simple.css`);
     document.head.append(simpleCssElement);
 
     const stylesCssElement = document.createElement("link");
     stylesCssElement.setAttribute("rel", "stylesheet");
-    stylesCssElement.setAttribute("href", stylesCss);
+    stylesCssElement.setAttribute("href", `${root}/common/styles.css`);
     document.head.append(stylesCssElement);
 
     const faviconElement = document.createElement("link");

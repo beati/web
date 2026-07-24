@@ -12,6 +12,8 @@
     --preformatted: #ccc;
     --disabled: #111;
     --h2: #dbdbdb; /* https://htmlcolorcodes.com/colors/shades-of-gray/ */
+    --border: #898EA4;
+    --marked: #ffdd33;
 
     img,
     video {
@@ -25,13 +27,11 @@
     --accent-bg: #f5f7ff;
     --text: #212121;
     --text-light: #585858;
-    --border: #898EA4;
     --accent: dodgerblue;
     --accent-hover: #1266e2;
     --accent-text: var(--bg);
     --code: #d81b60;
     --preformatted: #444;
-    --marked: #ffdd33;
     --disabled: #efefef;
     --h2: #525252; /* https://htmlcolorcodes.com/colors/shades-of-gray/ */
 

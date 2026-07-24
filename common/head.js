@@ -9,10 +9,6 @@ function head(root, title, description) {
     simpleCssPreloadElement.setAttribute("href", simpleCss);
     simpleCssPreloadElement.setAttribute("as", "style");
     document.head.append(simpleCssPreloadElement);
-    const simpleCssElement = document.createElement("link");
-    simpleCssElement.setAttribute("rel", "stylesheet");
-    simpleCssElement.setAttribute("href", simpleCss);
-    document.head.append(simpleCssElement);
 
     const stylesCss = `${root}/common/styles.css`;
     const stylesCssPreloadElement = document.createElement("link");
@@ -20,6 +16,12 @@ function head(root, title, description) {
     stylesCssPreloadElement.setAttribute("href", stylesCss);
     stylesCssPreloadElement.setAttribute("as", "style");
     document.head.append(stylesCssPreloadElement);
+
+    const simpleCssElement = document.createElement("link");
+    simpleCssElement.setAttribute("rel", "stylesheet");
+    simpleCssElement.setAttribute("href", simpleCss);
+    document.head.append(simpleCssElement);
+
     const stylesCssElement = document.createElement("link");
     stylesCssElement.setAttribute("rel", "stylesheet");
     stylesCssElement.setAttribute("href", stylesCss);

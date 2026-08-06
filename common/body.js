@@ -155,11 +155,16 @@ function bodyFooter() {
     themeScript();
 }
 
-function getSyncUrl(url) {
+function getSyncUrl(url, id) {
     const request = new XMLHttpRequest();
     request.open("GET", url, false);
     request.send();
-    return request.responseText;
+    const responseText = request.responseText;
+    if (id) {
+        document.getElementById(id).innerHTML = responseText;
+    } else {
+        return responseText;
+    }
 }
 
 function getAsyncUrlForId(url, id) {
